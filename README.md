@@ -12,9 +12,19 @@ The UX for this site is being driven by three main considerations:
  
 These considerations are ranked in importance already, ie. 1 is most important and 3 is the least, though I do not think that many sacrifices will need to be made to the less important considerations of theme. The majority of what consideration 3 demands, I think, can be achieved through colour, font, and image choice. 1 and 2, on the other hand, inform the structure of information directly. 
 
-In order to meet these requirements, I have decided on a layout that looks roughly as below:
+In order to meet these requirements, I have decided on a layout that looks roughly as belown (displayed are wireframes for the desktop site, wireframes for the tablet and phone experiences are available in assets/images/wireframes):
 
-<!-- show pictures of wireframes ---->
+![image of homepage wireframe on desktop](/assets/images/wireframes/homepage-desktop.png)
+
+![image of login page wireframe on desktop](/assets/images/wireframes/login-desktop.png)
+
+![image of method form wireframe on desktop](/assets/images/wireframes/method-form-desktop.png)
+
+![image of profile wireframe on desktop](/assets/images/wireframes/profile-desktop.png)
+
+![image of project wireframe on desktop](/assets/images/wireframes/project-desktop.png)
+
+![image of signup wireframe on desktop](/assets/images/wireframes/signup-desktop.png)
 
 As you can see, the homepage consists simply of a list of DIY methods each with an expandable description, a search bar,  and an image that conveys something about the theme. If a user wishes to view the method in its entirety, they may click the “Learn More” button (I may change the text here to something more direct like “View Method”). Clicking view method takes you to a method page which will be different depending on whether the user viewing the page is logged in as the method’s author. If they are, then it will look as depicted, as they are permitted to edit and delete said method. Otherwise, these buttons will not be displayed. 
 
@@ -36,6 +46,35 @@ I have made a post on DIYourself but I want to edit it. I return to the website 
 
 I am a developer who is on DIYourself either randomly or because they want to check out Joseph Keable’s work. I try making an account, making a method, and decide that I want to contact the developer of the site (Joseph Keable). To do so I can scroll to the bottom of any page and use the social media links found there to contact the site’s developer.
 
+## Theming
+
+In order to achieve a “DIY feel” for my site, I will be using a carefully selected combination of images, colours, and fonts. Below are some samples of each that are intended to convey a sense of where I would like to go thematically. They are not my final choices! The live website may vary from what is shown, though I think the vibe will be the same. 
+
+### Color Palette
+
+![image of brown and red colour palette](/assets/images/color/colour-pallete1.png)
+
+![image of brown and red colour palette](/assets/images/color/colour-pallete2.png)
+
+### Fonts
+
+![image of rustic font sample](/assets/images/fonts/font1.png)
+
+![image of rustic font sample](/assets/images/fonts/font2.png)
+
+### Theme Images 
+
+![image of woodworking tools](/assets/images/theming/woodwork-tools-min.jpg)
+
+![image of woodworking tools](/assets/images/theming/woodwork-tools2-min.jpg)
+
+![image of a guitar](/assets/images/theming/guitar-min.jpg)
+
+![image of christmas decorations](/assets/images/theming/christmas-min.jpg)
+
+![image of candles being made](/assets/images/theming/candles-min.jpg)
+
+![image of woodworking tools](/assets/images/theming/woodwork-tools3-min.jpg)
  
 <!--Use this section to provide insight into your UX process, focusing on who this website is for, what it is that they want to achieve and how your project is the best way to help them achieve these things.
 
