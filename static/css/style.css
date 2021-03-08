@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredericka+the+Great&family=Josefin+Slab&display=swap');
+
+#logo {
+    font-family: 'Fredericka the Great', cursive;
+    padding-left: 20px;
+}
+
+#subtitle {
+    font-family: 'Josefin Slab', serif;
+    font-size: smaller;
+}
+
+ul li {
+    font-family: 'Josefin Slab', serif;
+}

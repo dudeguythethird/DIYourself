@@ -15,6 +15,28 @@
 </head>
 
 <body>
+    <!-- Main Nav bar on Desktop -->
+    <header>
+        <nav class="brown lighten-2">
+            <div class="nav-wrapper">
+                <a href="#!" class="brand-logo" id="logo">DIYourself<span id="subtitle"> - A practicle methods sharing forum</span></a>
+                <a href="#" data-target="mobile-demo" class="right sidenav-trigger"><i class="material-icons">menu</i></a>
+                <ul class="right hide-on-med-and-down">
+                    <li><a href="sass.html">Sass</a></li>
+                    <li><a href="badges.html">Components</a></li>
+                    <li><a href="collapsible.html">Javascript</a></li>
+                    <li><a href="mobile.html">Mobile</a></li>
+                </ul>
+            </div>
+        </nav>
+        <!-- Mobile Nav Menu -->
+        <ul class="sidenav" id="mobile-demo">
+            <li><a href="sass.html">Sass</a></li>
+            <li><a href="badges.html">Components</a></li>
+            <li><a href="collapsible.html">Javascript</a></li>
+            <li><a href="mobile.html">Mobile</a></li>
+        </ul>
+    </header>
 
     <h1>I'm part of the base template!</h1>
     {% block content %}
