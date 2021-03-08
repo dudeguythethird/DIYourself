@@ -5,6 +5,10 @@
     padding-left: 20px;
 }
 
+.mobile-logo {
+    font-family: 'Fredericka the Great', cursive;
+}
+
 #subtitle {
     font-family: 'Josefin Slab', serif;
     font-size: smaller;
@@ -13,3 +17,12 @@
 ul li {
     font-family: 'Josefin Slab', serif;
 }
+
+/* This ovverides some materialize css that centres the brand logo classed element on smaller screens. */
+
+@media only screen and (max-width: 992px){
+nav .brand-logo {
+    left: 0;
+    display: inline;
+    position: relative;
+}}
