@@ -1,5 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Fredericka+the+Great&family=Josefin+Slab&display=swap');
 
+/*-------------------------------------------------------Site Wide Styles*/
+
+body {
+    font-family: 'Josefin Slab', serif;
+}
+
+button {
+    font-family: 'Josefin Slab', serif;
+}
+
 #logo {
     font-family: 'Fredericka the Great', cursive;
     padding-left: 20px;
@@ -16,6 +26,18 @@
 
 ul li {
     font-family: 'Josefin Slab', serif;
+}
+
+/*-------------------------------------------------------Form Styles*/
+
+/* button centering method from: https://www.javatpoint.com/how-to-center-a-button-in-css */ 
+
+.btn-container {
+    display: grid;
+}
+
+button {
+    margin: auto;
 }
 
 /* This ovverides some materialize css that centres the brand logo classed element on smaller screens. */
