@@ -24,12 +24,14 @@
                 <a href="#" data-target="mobile-demo" class="right sidenav-trigger"><i class="fas fa-bars"></i></a>
                 <ul class="right hide-on-med-and-down">
                     <li><a href="{{ url_for('get_methods') }}">Home</a></li>
-                    <li><a href="#">Profile</a></li>
-                    <li><a href="#">Add Method</a></li>
-                    <li><a href="{{ url_for('profile', username=session['user']) }}">My Profile</a></li>
-                    <li><a href="{{ url_for('login') }}">Log In</a></li>
-                    <li><a href="#">Log Out</a></li>
-                    <li><a href="{{ url_for('sign_up') }}">Sign Up</a></li>
+                    {% if session.user %}
+                        <li><a href="#">Add Method</a></li>
+                        <li><a href="{{ url_for('profile', username=session['user']) }}">My Profile</a></li>
+                        <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+                    {% else %}
+                        <li><a href="{{ url_for('login') }}">Log In</a></li>
+                        <li><a href="{{ url_for('sign_up') }}">Sign Up</a></li>
+                    {% endif %}
                 </ul>
             </div>
         </nav>
@@ -39,12 +41,14 @@
                 <h4 class="center-align mobile-logo brown-text lighten-2">DIYourself</h4>
             </li>
             <li><a href="{{ url_for('get_methods') }}">Home</a></li>
-            <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
-            <li><a href="#">Add Method</a></li>
-            <li><a href="#">My Profile</a></li>
-            <li><a href="{{ url_for('login') }}">Log In</a></li>
-            <li><a href="#">Log Out</a></li>
-            <li><a href="{{ url_for('sign_up') }}">Sign Up</a></li>
+            {% if session.user %}
+                <li><a href="#">Add Method</a></li>
+                <li><a href="{{ url_for('profile', username=session['user']) }}">My Profile</a></li>
+                <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+            {% else %}
+                <li><a href="{{ url_for('login') }}">Log In</a></li>
+                <li><a href="{{ url_for('sign_up') }}">Sign Up</a></li>
+            {% endif %}
         </ul>
     </header>
 
