@@ -36,7 +36,8 @@ def sign_up():
             flash("Username already in use")
             return redirect(url_for("sign_up"))
 
-        if request.form.get("password") == request.form.get("password_confirm"):
+        if request.form.get("password") == request.form.get(
+                "password_confirm"):
             sign_up = {
                 "username": request.form.get("username").lower(),
                 "password": generate_password_hash(
@@ -49,6 +50,32 @@ def sign_up():
             flash("Sign-Up Successful!")
 
     return render_template("sign_up.html")
+
+
+@app.route("/login", methods=["GET", "POST"])
+def login():
+    if request.method == "POST":
+        # Check if username exists in db.
+        existing_user = mongo.db.users.find_one(
+            {"username": request.form.get("username").lower()})
+
+        if existing_user:
+            # Check hashed passwords match
+            if check_password_hash(
+                    existing_user["password"], request.form.get("password")):
+                session["user"] = request.form.get("username").lower()
+                flash("Welcome, {}".format(request.form.get("username")))
+            else:
+                # When passwords dont match
+                flash("Incorrect Username and/or Password")
+                return redirect(url_for("login"))
+
+        else:
+            # When username provided not present in DB.
+            flash("Incorrect Username and/or Password")
+            return redirect(url_for("login"))
+
+    return render_template("login.html")
 
 
 if __name__ == "__main__":
