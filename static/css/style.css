@@ -8,6 +8,7 @@ body {
 
 button {
     font-family: 'Josefin Slab', serif;
+    font-weight: bold;
 }
 
 #logo {
@@ -26,6 +27,10 @@ button {
 
 ul li {
     font-family: 'Josefin Slab', serif;
+}
+
+.flashes h4 {
+    line-height: 2;
 }
 
 /*-------------------------------------------------------Form Styles*/
