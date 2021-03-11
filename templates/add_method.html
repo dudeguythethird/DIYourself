@@ -16,6 +16,18 @@
             </div>
             <div class="row">
                 <div class="input-field col s12">
+                    <i class="fas fa-folder-open prefix orange-text text-lighten-2"></i>
+                    <select id="category_name" name="category_name" class="validate" required>
+                        <option class= "white-text" value="" disabled selected>Choose your method's category</option>
+                        {% for category in categories %}
+                            <option class= "white-text" value="{{ category.category_name }}">{{ category.category_name }}</option>
+                        {% endfor %}
+                    </select>
+                    <label class= "white-text" for="category_name">Select Method Category</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
                     <i class="fas fa-align-left prefix orange-text text-lighten-2"></i>
                     <textarea id="method_description" name="method_description" minlength="5" maxlength="200"
                         class="materialize-textarea validate" required></textarea>

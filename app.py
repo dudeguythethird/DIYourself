@@ -102,7 +102,8 @@ def logout():
 
 @app.route("/add_method")
 def add_method():
-    return render_template("add_method.html")
+    categories = mongo.db.categories.find().sort("category_name", 1)
+    return render_template("add_method.html", categories=categories)
 
 
 if __name__ == "__main__":

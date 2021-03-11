@@ -96,6 +96,13 @@ a i:hover {
     color: #5f4339;
 }
 
+/*-------------------------------------------------------Submite Form Styles*/
+
+.select-wrapper input.select-dropdown {
+    font-family: 'Josefin Slab', serif;
+    color: white;
+}
+
 /* button centering method from: https://www.javatpoint.com/how-to-center-a-button-in-css */ 
 
 .btn-container {
