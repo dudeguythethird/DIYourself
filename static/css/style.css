@@ -5,6 +5,13 @@
 body {
     font-family: 'Josefin Slab', serif;
     background-color: #d7ccc8;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
 }
 
 button {
@@ -28,10 +35,39 @@ button {
 
 ul li {
     font-family: 'Josefin Slab', serif;
+    
+}
+
+.inline {
+    display: inline;
 }
 
 .flashes h4 {
     line-height: 2;
+}
+
+.footer-copyright div {
+    font-size: large;
+    margin-left: 40px;
+}
+
+.page-footer {
+    background-color: #a1887f;
+    padding-top: 0;
+}
+
+.page-footer .footer-copyright {
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.socials {
+    padding-left: 40px;
+    padding-right: 60px;
+    font-size: x-large;
+}
+
+a i:hover {
+    color: #e65100;
 }
 
 /*-------------------------------------------------------Homepage Styles*/
