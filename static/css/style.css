@@ -4,6 +4,7 @@
 
 body {
     font-family: 'Josefin Slab', serif;
+    background-color: #d7ccc8;
 }
 
 button {
@@ -16,7 +17,7 @@ button {
     padding-left: 20px;
 }
 
-.mobile-logo {
+.title {
     font-family: 'Fredericka the Great', cursive;
 }
 
@@ -33,7 +34,31 @@ ul li {
     line-height: 2;
 }
 
-/*-------------------------------------------------------Form Styles*/
+/*-------------------------------------------------------Homepage Styles*/
+
+.card .card-content .card-title {
+    display: inline;
+}
+
+.card .card-action {
+    border-top: 1px solid #d7ccc8;
+}
+
+.card .card-content p {
+    margin-top: 10px;
+}
+
+.category-name {
+    margin-top: 10px;
+}
+
+.card .card-action a:not(.btn):not(.btn-large):not(.btn-small):not(.btn-large):not(.btn-floating) {
+    color: white;
+}
+
+.card .card-action a:not(.btn):not(.btn-large):not(.btn-small):not(.btn-large):not(.btn-floating):hover {
+    color: #5f4339;
+}
 
 /* button centering method from: https://www.javatpoint.com/how-to-center-a-button-in-css */ 
 
