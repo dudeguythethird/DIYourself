@@ -21,7 +21,7 @@ mongo = PyMongo(app)
 @app.route("/")
 @app.route("/get_methods")
 def get_methods():
-    methods = mongo.db.methods.find()
+    methods = list(mongo.db.methods.find())
     return render_template("methods.html", methods=methods)
 
 

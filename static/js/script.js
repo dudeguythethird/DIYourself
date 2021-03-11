@@ -1,3 +1,5 @@
+// This function initialises the mobile sidenav component from materialize
+
 $(document).ready(function(){
     $('.sidenav').sidenav({edge: "right"});
   });
