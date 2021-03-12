@@ -110,6 +110,8 @@ a i:hover {
     color: white;
 }
 
+
+
 /* button centering method from: https://www.javatpoint.com/how-to-center-a-button-in-css */ 
 
 .btn-container {
@@ -118,6 +120,10 @@ a i:hover {
 
 button {
     margin: auto;
+}
+
+#category_name {
+    border: none;
 }
 
 /* This ovverides some materialize css that centres the brand logo classed element on smaller screens. */
