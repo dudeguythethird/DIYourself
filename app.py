@@ -5,6 +5,7 @@ from flask import (
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
+from datetime import date
 if os.path.exists("env.py"):
     import env
 
@@ -22,6 +23,7 @@ mongo = PyMongo(app)
 @app.route("/get_methods")
 def get_methods():
     methods = list(mongo.db.methods.find())
+    methods.reverse()
     return render_template("methods.html", methods=methods)
 
 
@@ -100,8 +102,24 @@ def logout():
     return redirect(url_for("login"))
 
 
-@app.route("/add_method")
+@app.route("/add_method", methods=["GET", "POST"])
 def add_method():
+    if request.method == "POST":
+        todaysDate = date.today()
+        euroDate = todaysDate.strftime("%d/%m/%Y")
+        method = {
+            "method_name": request.form.get('method_name'),
+            "category_name": request.form.get('category_name'),
+            "method_description": request.form.get('method_description'),
+            "method_video": request.form.get('method_video'),
+            "method_steps": request.form.get('method_steps'),
+            "method_created": euroDate,
+            "created_by": session["user"]
+        }
+        mongo.db.methods.insert_one(method)
+        flash("DIY Method Successfully Added")
+        return redirect(url_for("get_methods"))
+
     categories = mongo.db.categories.find().sort("category_name", 1)
     return render_template("add_method.html", categories=categories)
 

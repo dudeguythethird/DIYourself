@@ -96,9 +96,16 @@ a i:hover {
     color: #5f4339;
 }
 
-/*-------------------------------------------------------Submite Form Styles*/
+/*-------------------------------------------------------Add Method Form Styles*/
 
 .select-wrapper input.select-dropdown {
+    font-family: 'Josefin Slab', serif;
+    color: white;
+}
+
+/* The following rule targetst the text inputted into the form, bringing its look in alignement with the rest of the site*/
+
+.input-field .prefix ~ input, .input-field .prefix ~ textarea, .input-field .prefix ~ label, .input-field .prefix ~ .validate ~ label, .input-field .prefix ~ .helper-text, .input-field .prefix ~ .autocomplete-content {
     font-family: 'Josefin Slab', serif;
     color: white;
 }

@@ -4,8 +4,9 @@
 <h3 class="center-align">Add a New Method</h3>
 
 <div class="row">
-    <form class="col s12" method="POST" action="">
+    <form class="col s12" method="POST" action="{{ url_for('add_method') }}">
         <div class="card-panel brown lighten-2">
+            <!-- Method Name Text Input -->
             <div class="row">
                 <div class="input-field col s12">
                     <i class="fas fa-file-signature prefix orange-text text-lighten-2"></i>
@@ -14,6 +15,7 @@
                     <label for="method_name" class="white-text">Method Name</label>
                 </div>
             </div>
+            <!-- Category Selection Dropdown -->
             <div class="row">
                 <div class="input-field col s12">
                     <i class="fas fa-folder-open prefix orange-text text-lighten-2"></i>
@@ -26,6 +28,7 @@
                     <label class= "white-text" for="category_name">Select Method Category</label>
                 </div>
             </div>
+            <!-- Method Description text field -->
             <div class="row">
                 <div class="input-field col s12">
                     <i class="fas fa-align-left prefix orange-text text-lighten-2"></i>
@@ -34,6 +37,7 @@
                     <label for="method_description" class="white-text">Method Description</label>
                 </div>
             </div>
+            <!-- YouTube link URL field -->
             <div class="row">
                 <div class="input-field col s12">
                     <i class="fab fa-youtube prefix orange-text text-lighten-2"></i>
@@ -41,6 +45,7 @@
                     <label for="method_video" class="white-text">YouTube Link (Optional)</label>
                 </div>
             </div>
+            <!-- Method Steps Text Field -->
             <div class="row">
                 <div class="input-field col s12">
                     <i class="fas fa-list-ol prefix orange-text text-lighten-2"></i>
@@ -48,6 +53,12 @@
                         class="materialize-textarea validate" required></textarea>
                     <label for="method_steps" class="white-text">Method Steps</label>
                 </div>
+            </div>
+            <!-- Submit Button -->
+            <div class="row btn-container">
+                <button type="submit" class= "col s3 l2 btn-large waves-effect waves-light orange lighten-2 black-text">
+                    Add Method <i class="fas fa-plus-square right"></i>
+                </button>
             </div>
         </div>
     </form>
