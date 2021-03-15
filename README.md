@@ -14,17 +14,17 @@ These considerations are ranked in importance already, ie. 1 is most important a
 
 In order to meet these requirements, I have decided on a layout that looks roughly as belown (displayed are wireframes for the desktop site, wireframes for the tablet and phone experiences are available in assets/images/wireframes):
 
-![image of homepage wireframe on desktop](/assets/images/wireframes/homepage-desktop.png)
+![image of homepage wireframe on desktop](/static/assets/images/wireframes/homepage-desktop.png)
 
-![image of login page wireframe on desktop](/assets/images/wireframes/login-desktop.png)
+![image of login page wireframe on desktop](/static/assets/images/wireframes/login-desktop.png)
 
-![image of method form wireframe on desktop](/assets/images/wireframes/method-form-desktop.png)
+![image of method form wireframe on desktop](/static/assets/images/wireframes/method-form-desktop.png)
 
-![image of profile wireframe on desktop](/assets/images/wireframes/profile-desktop.png)
+![image of profile wireframe on desktop](/static/assets/images/wireframes/profile-desktop.png)
 
-![image of project wireframe on desktop](/assets/images/wireframes/project-desktop.png)
+![image of project wireframe on desktop](/static/assets/images/wireframes/project-desktop.png)
 
-![image of signup wireframe on desktop](/assets/images/wireframes/signup-desktop.png)
+![image of signup wireframe on desktop](/static/assets/images/wireframes/signup-desktop.png)
 
 As you can see, the homepage consists simply of a list of DIY methods each with an expandable description, a search bar,  and an image that conveys something about the theme. If a user wishes to view the method in its entirety, they may click the “Learn More” button (I may change the text here to something more direct like “View Method”). Clicking view method takes you to a method page which will be different depending on whether the user viewing the page is logged in as the method’s author. If they are, then it will look as depicted, as they are permitted to edit and delete said method. Otherwise, these buttons will not be displayed. 
 
@@ -52,29 +52,29 @@ In order to achieve a “DIY feel” for my site, I will be using a carefully se
 
 ### Color Palette
 
-![image of brown and red colour palette](/assets/images/color/colour-pallete1.png)
+![image of brown and red colour palette](/static/assets/images/color/colour-pallete1.png)
 
-![image of brown and red colour palette](/assets/images/color/colour-pallete2.png)
+![image of brown and red colour palette](/static/assets/images/color/colour-pallete2.png)
 
 ### Fonts
 
-![image of rustic font sample](/assets/images/fonts/font1.png)
+![image of rustic font sample](/static/assets/images/fonts/font1.png)
 
-![image of rustic font sample](/assets/images/fonts/font2.png)
+![image of rustic font sample](/static/assets/images/fonts/font2.png)
 
 ### Theme Images 
 
-![image of woodworking tools](/assets/images/theming/woodwork-tools-min.jpg)
+![image of woodworking tools](/static/assets/images/theming/woodwork-tools-min.jpg)
 
-![image of woodworking tools](/assets/images/theming/woodwork-tools2-min.jpg)
+![image of woodworking tools](/static/assets/images/theming/woodwork-tools2-min.jpg)
 
-![image of a guitar](/assets/images/theming/guitar-min.jpg)
+![image of a guitar](/static/assets/images/theming/guitar-min.jpg)
 
-![image of christmas decorations](/assets/images/theming/christmas-min.jpg)
+![image of christmas decorations](/static/assets/images/theming/christmas-min.jpg)
 
-![image of candles being made](/assets/images/theming/candles-min.jpg)
+![image of candles being made](/static/assets/images/theming/candles-min.jpg)
 
-![image of woodworking tools](/assets/images/theming/woodwork-tools3-min.jpg)
+![image of woodworking tools](/static/assets/images/theming/woodwork-tools3-min.jpg)
  
 <!--Use this section to provide insight into your UX process, focusing on who this website is for, what it is that they want to achieve and how your project is the best way to help them achieve these things.
 

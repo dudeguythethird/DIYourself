@@ -1,8 +1,11 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h3 class="center-align">All DIY Methods</h3>
+<img src="{{ url_for('static', filename='assets/images/theming/woodwork-tools3-min.jpg') }}" alt="image of various woodworking woodworking tools" class="background-image">
 
+<main class="container">
+    
+<h3 class="center-align">All DIY Methods</h3>
 {% for method in methods %}
 <div class="row">
     <div class="col s12 m8 offset-m2">
@@ -19,5 +22,6 @@
         </div>
     </div>
 </div>
+</main>
 {% endfor %}
 {% endblock %}

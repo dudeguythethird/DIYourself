@@ -98,6 +98,11 @@ a i:hover {
 
 /*-------------------------------------------------------Add Method Form Styles*/
 
+.background-image {
+    width: 100%;
+    z-index: -1;
+}
+
 .select-wrapper input.select-dropdown {
     font-family: 'Josefin Slab', serif;
     color: white;
