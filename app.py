@@ -124,6 +124,15 @@ def add_method():
     return render_template("add_method.html", categories=categories)
 
 
+@app.route("/method/<method_id>", methods=["GET", "POST"])
+def method(method_id):
+    method = mongo.db.methods.find_one({"_id": ObjectId(method_id)})
+    categories = mongo.db.categories.find().sort("category_name", 1)
+    # This variable may not be needed. Maybe delete later.
+    return render_template(
+        "method.html", method=method, methodcategories=categories)
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),

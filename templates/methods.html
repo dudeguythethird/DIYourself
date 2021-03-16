@@ -20,7 +20,7 @@
                         <p>{{ method.method_description }}</p>
                     </div>
                     <div class="card-action black-text">
-                        <a href="#">View Method</a>
+                        <a href="{{ url_for('method', method_id=method._id) }}">View Method</a>
                     </div>
                 </div>
             </div>
