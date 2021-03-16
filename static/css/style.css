@@ -98,9 +98,30 @@ a i:hover {
 
 /*-------------------------------------------------------Add Method Form Styles*/
 
+/*The following set of 3 styles make the back ground image function on the main page. the method comes from here: https://www.dwuser.com/education/content/the-basics-of-overlaying-content/ */ 
+
+.stage-wrapper {
+    position: relative;
+    top: 0;
+    left: 0;
+    bottom: 0;
+}
+
 .background-image {
     width: 100%;
     z-index: -1;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.content-wrapper {
+    position: relative;
+}
+
+.all-methods {
+    margin-top: 0;
+    padding-top: 50px;
 }
 
 .select-wrapper input.select-dropdown {
