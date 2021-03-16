@@ -3,10 +3,31 @@
 
 <main class="container">
 
-    <h3 class="center-align">{{ method.method_name }}</h3>
+    <h3 class="center-align title">{{ method.method_name }}</h3>
 
     <div class="row">
-        
+        <div class="card-panel brown lighten-2 col s12 white-text" id="method-content">
+            <div class="row">
+                <div class="col s6 m8 valign-wrapper">
+                    <h5 class="method-information"><span class="hide-on-small-only">{{ method.category_name }} -
+                        </span>Created by
+                        {{ method.created_by }}
+                    </h5>
+                </div>
+                {% if session.user %}
+                <div class="col s6 m4">
+                    <a class="waves-effect waves-light btn-small orange darken-2 right method-button">Edit</a>
+                    <a class="waves-effect waves-light btn-small orange darken-2 right method-button">Delete</a>
+                </div>
+                {% endif %}
+            </div>
+            <div class="row">
+                <div class="col s12">
+                    <h6>Instructions</h6>
+                    <p>{{ method.method_steps }}</p>
+                </div>
+            </div>
+        </div>
     </div>
 </main>
 

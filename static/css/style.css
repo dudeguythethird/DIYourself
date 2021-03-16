@@ -136,7 +136,20 @@ a i:hover {
     color: white;
 }
 
+/*-------------------------------------------------------Method Page Styles*/
 
+.method-information {
+    display: inline;
+}
+
+#method-content {
+    padding-top: 10px;
+}
+
+.method-button {
+    margin-left: 10px;
+    margin-top: 12px;
+}
 
 /* button centering method from: https://www.javatpoint.com/how-to-center-a-button-in-css */ 
 
@@ -159,4 +172,5 @@ nav .brand-logo {
     left: 0;
     display: inline;
     position: relative;
-}}
+}
+}
