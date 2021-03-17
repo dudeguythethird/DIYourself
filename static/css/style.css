@@ -136,6 +136,11 @@ a i:hover {
     color: white;
 }
 
+.add-input {
+    font-size: xx-large;
+    ;    
+}
+
 /*-------------------------------------------------------Method Page Styles*/
 
 .method-information {
