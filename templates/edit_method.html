@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% block content %}
+
+<main class="container">
+
+    <h3 class="center-align">Edit Method</h3>
+
+    <div class="row">
+        <form class="col s12" method="POST" action="{{ url_for('edit_method', method_id=method.id) }}">
+            <div class="card-panel brown lighten-2">
+                <!-- Method Name Text Input -->
+                <div class="row">
+                    <div class="input-field col s12">
+                        <i class="fas fa-file-signature prefix orange-text text-lighten-2"></i>
+                        <input id="method_name" name="method_name" minlength="5" maxlength="50" type="text"
+                            class="validate" required>
+                        <label for="method_name" class="white-text">Method Name</label>
+                    </div>
+                </div>
+                <!-- Category Selection Dropdown -->
+                <div class="row">
+                    <div class="input-field col s12">
+                        <i class="fas fa-folder-open prefix orange-text text-lighten-2"></i>
+                        <select id="category_name" name="category_name" class="validate" required>
+                            <option class="white-text" value="" disabled selected>Choose your method's category</option>
+                            {% for category in categories %}
+                            <option class="white-text" value="{{ category.category_name }}">{{ category.category_name }}
+                            </option>
+                            {% endfor %}
+                        </select>
+                        <label class="white-text" for="category_name">Select Method Category</label>
+                    </div>
+                </div>
+                <!-- Method Description text field -->
+                <div class="row">
+                    <div class="input-field col s12">
+                        <i class="fas fa-align-left prefix orange-text text-lighten-2"></i>
+                        <textarea id="method_description" name="method_description" minlength="5" maxlength="200"
+                            class="materialize-textarea validate" required></textarea>
+                        <label for="method_description" class="white-text">Method Description</label>
+                    </div>
+                </div>
+                <!-- YouTube link URL field -->
+                <div class="row">
+                    <div class="input-field col s12">
+                        <i class="fab fa-youtube prefix orange-text text-lighten-2"></i>
+                        <input id="method_video" name="method_video" type="url" class="validate">
+                        <label for="method_video" class="white-text">YouTube Link (Optional)</label>
+                    </div>
+                </div>
+                <!-- Method Steps Text Field -->
+                <div class="row">
+                    <div class="input-field col s12">
+                        <i class="fas fa-list-ol prefix orange-text text-lighten-2"></i>
+                        <textarea id="method_steps" name="method_steps" minlength="5" maxlength="2000"
+                            class="materialize-textarea validate" required></textarea>
+                        <label for="method_steps" class="white-text">Method Instructions</label>
+                    </div>
+                    <!--Below is the begining of a method that I may yet implement, that will allow users to add a custom number of text fields for their method instructions (one for each step) and then they would be stored as a list or perhaps a dictionary. DELETE???-->
+                    <!-- <div class="col s1">
+                        <br>
+                        <a href="javascript:void(0);" class="add-input orange-text text-lighten-2"><i class="far fa-plus-square"></i></a>
+                    </div> -->
+                </div>
+                <!-- Submit Button -->
+                <div class="row btn-container">
+                    <button type="submit"
+                        class="col s3 l2 btn-large waves-effect waves-light orange lighten-2 black-text">
+                        Edit Method <i class="fas fa-edit right"></i>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</main>
+
+{% endblock %}

@@ -124,13 +124,18 @@ def add_method():
     return render_template("add_method.html", categories=categories)
 
 
-@app.route("/method/<method_id>", methods=["GET", "POST"])
+@app.route("/method/<method_id>", methods=["GET"])
 def method(method_id):
     method = mongo.db.methods.find_one({"_id": ObjectId(method_id)})
+    return render_template("method.html", method=method)
+
+
+@app.route("/method/edit_method/<method_id>", methods=["GET", "POST"])
+def edit_method(method_id):
+    method = mongo.db.methods.find_one({"_id": ObjectId(method_id)})
     categories = mongo.db.categories.find().sort("category_name", 1)
-    # This variable may not be needed. Maybe delete later.
     return render_template(
-        "method.html", method=method, methodcategories=categories)
+        "edit_method.html", method=method, categories=categories)
 
 
 if __name__ == "__main__":
