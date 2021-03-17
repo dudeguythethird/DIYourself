@@ -1,7 +1,7 @@
 // This function initialises the mobile sidenav component from materialize
 
-$(document).ready(function(){
-    $('.sidenav').sidenav({edge: "right"});
+$(document).ready(function () {
+    $('.sidenav').sidenav({ edge: "right" });
     $('select').formSelect();
 
     validateMaterializeSelect();
@@ -31,26 +31,20 @@ $(document).ready(function(){
             }
         });
     }
-  });
+});
 
 // The following password validation method was found: https://codepen.io/diegoleme/pen/surIK
 
-if (window.location.pathname == '/sign_up') {
-
 var password = document.getElementById("password")
-  , confirm_password = document.getElementById("password_confirm");
+    , confirm_password = document.getElementById("password_confirm");
 
 function validatePassword() {
-    if (password || confirm_password) {
-        if (password.value != confirm_password.value) {
-            confirm_password.setCustomValidity("Passwords Don't Match");
-        } else {
-            confirm_password.setCustomValidity('');
-        }
+    if (password.value != confirm_password.value) {
+        confirm_password.setCustomValidity("Passwords Don't Match");
+    } else {
+        confirm_password.setCustomValidity('');
     }
 }
 
 password.onchange = validatePassword();
 confirm_password.onkeyup = validatePassword();
-
-}

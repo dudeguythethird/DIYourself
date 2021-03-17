@@ -137,8 +137,7 @@ a i:hover {
 }
 
 .add-input {
-    font-size: xx-large;
-    ;    
+    font-size: xx-large;    
 }
 
 /*-------------------------------------------------------Method Page Styles*/
@@ -168,6 +167,10 @@ button {
 
 #category_name {
     border: none;
+}
+
+.instructions {
+    white-space: pre-wrap;
 }
 
 /* This ovverides some materialize css that centres the brand logo classed element on smaller screens. */
