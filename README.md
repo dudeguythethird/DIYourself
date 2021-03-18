@@ -153,6 +153,7 @@ If this section grows too long, you may want to split it off into a separate fil
 ## Bugs
 
 - bug discovered where form validation for confirm password stopped working on sign up page. 
+- bug discovered where method page does not immidiately update after editing. 
 
 ## Deployment
 
@@ -172,6 +173,7 @@ https://www.programiz.com/python-programming/datetime/current-datetime
 https://www.programiz.com/python-programming/methods/list/reverse
 https://www.dwuser.com/education/content/the-basics-of-overlaying-content/
 https://developer.mozilla.org/en-US/docs/Web/CSS/white-space
+https://stackoverflow.com/questions/9139075/how-to-show-a-confirm-message-before-delete/19973570
 
 ### Content
 - The text for section Y was copied from the [Wikipedia article Z](https://en.wikipedia.org/wiki/Z)

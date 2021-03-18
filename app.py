@@ -151,6 +151,13 @@ def edit_method(method_id):
         "edit_method.html", method=method, categories=categories)
 
 
+@app.route("/delete_method/<method_id>")
+def delete_method(method_id):
+    mongo.db.methods.remove({"_id": ObjectId(method_id)})
+    flash("Method Successfully Deleted")
+    return redirect(url_for("get_methods"))
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
