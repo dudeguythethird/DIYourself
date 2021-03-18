@@ -133,6 +133,19 @@ def method(method_id):
 @app.route("/method/edit_method/<method_id>", methods=["GET", "POST"])
 def edit_method(method_id):
     method = mongo.db.methods.find_one({"_id": ObjectId(method_id)})
+    if request.method == "POST":
+        edit = {
+            "method_name": request.form.get('method_name'),
+            "category_name": request.form.get('category_name'),
+            "method_description": request.form.get('method_description'),
+            "method_video": request.form.get('method_video'),
+            "method_steps": request.form.get('method_steps'),
+            "created_by": session["user"]
+        }
+        mongo.db.methods.update({"_id": ObjectId(method_id)}, edit)
+        flash("DIY Method Successfully Updated")
+        return render_template("method.html", method=method)
+
     categories = mongo.db.categories.find().sort("category_name", 1)
     return render_template(
         "edit_method.html", method=method, categories=categories)

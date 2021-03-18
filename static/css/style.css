@@ -155,16 +155,6 @@ a i:hover {
     margin-top: 12px;
 }
 
-/* button centering method from: https://www.javatpoint.com/how-to-center-a-button-in-css */ 
-
-.btn-container {
-    display: grid;
-}
-
-button {
-    margin: auto;
-}
-
 #category_name {
     border: none;
 }
@@ -182,3 +172,8 @@ nav .brand-logo {
     position: relative;
 }
 }
+
+@media only screen and (min-width: 1200px){
+.content-wrapper {
+    min-height: 750px;
+}}

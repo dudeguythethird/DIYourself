@@ -14,7 +14,7 @@
                         {{ method.created_by }}
                     </h5>
                 </div>
-                {% if session.user %}
+                {% if session.user|lower == method.created_by|lower %}
                 <div class="col s6 m4">
                     <a href="{{ url_for('edit_method', method_id=method._id) }}" class="waves-effect waves-light btn-small orange darken-2 right method-button">Edit</a> 
                     <a class="waves-effect waves-light btn-small orange darken-2 right method-button">Delete</a>
