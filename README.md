@@ -153,7 +153,8 @@ If this section grows too long, you may want to split it off into a separate fil
 ## Bugs
 
 - bug discovered where form validation for confirm password stopped working on sign up page. 
-- bug discovered where method page does not immidiately update after editing. 
+- bug discovered where method page does not immidiately update after editing, requires reload.
+- bug discovered where " appears at the end of method description strings when read from the db...
 
 ## Deployment
 

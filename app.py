@@ -163,6 +163,25 @@ def delete_method(method_id):
     return redirect(url_for("get_methods"))
 
 
+@app.route("/add_category", methods=["GET", "POST"])
+def add_category():
+    if request.method == "POST":
+        category = {
+            "category_name": request.form.get("category_name")
+        }
+        username = mongo.db.users.find_one(
+            {"username": session["user"]})["username"]
+        categories = list(mongo.db.categories.find().sort("category_name", 1))
+        is_admin = mongo.db.users.find_one(
+            {"username": session["user"]})["is_admin"]
+        mongo.db.categories.insert_one(category)
+        flash("New Category Added")
+        return render_template("profile.html", username=username,
+                               categories=categories, is_admin=is_admin)
+
+    return render_template("add_category.html")
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),

@@ -15,6 +15,13 @@
             </div>
         </div>
         <div class="row">
+            <div class="col s12 center-align">
+                <a href="{{ url_for('add_category') }}" class="btn-large orange darken-2">
+                    Add Category <i class="fas fa-plus-square right"></i>
+                </a>
+            </div>
+        </div>
+        <div class="row">
             {% for category in categories %}
                 <div class="col s12 m3">
                     <div class="card orange darken-2 center-align">
