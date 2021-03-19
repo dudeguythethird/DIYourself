@@ -43,7 +43,8 @@ def sign_up():
             sign_up = {
                 "username": request.form.get("username").lower(),
                 "password": generate_password_hash(
-                    request.form.get("password"))
+                    request.form.get("password")),
+                "is_admin": False
             }
             mongo.db.users.insert_one(sign_up)
 
@@ -88,10 +89,12 @@ def profile(username):
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
     categories = list(mongo.db.categories.find().sort("category_name", 1))
+    is_admin = mongo.db.users.find_one(
+        {"username": session["user"]})["is_admin"]
 
     if session["user"]:
-        return render_template(
-            "profile.html", username=username, categories=categories)
+        return render_template("profile.html", username=username,
+                               categories=categories, is_admin=is_admin)
 
     return redirect(url_for("login"))
 
