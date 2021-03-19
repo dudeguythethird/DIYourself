@@ -163,6 +163,12 @@ a i:hover {
     white-space: pre-wrap;
 }
 
+/*-------------------------------------------------------Profile Page Styles*/
+
+.user {
+    margin-top: 20px;
+}
+
 /* This ovverides some materialize css that centres the brand logo classed element on smaller screens. */
 
 @media only screen and (max-width: 992px){
