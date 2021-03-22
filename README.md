@@ -149,13 +149,20 @@ In addition, you should mention in this section how your project looks and works
 You should also mention in this section any interesting bugs or problems you discovered during your testing, even if you haven't addressed them yet.
 
 If this section grows too long, you may want to split it off into a separate file and link to it from here.
-
+--->
 ## Bugs
 
-- bug discovered where form validation for confirm password stopped working on sign up page. 
-- bug discovered where method page does not immidiately update after editing, requires reload.
-- bug discovered where " appears at the end of method description strings when read from the db...
+1. Bug discovered where form validation for confirm password stopped working on sign up page. 
 
+1. Bug discovered where method page does not immidiately update after editing, requires reload.
+    1. Bug squashed by using `return redirect(url_for('method', method_id=method_id))` to redrect to the method page after method editing is complete. This takes new changes into account.
+
+1. Bug discovered where profile page for admins does not 
+immidiately update after adding a new category. (suspect cause is same as last bug)
+    1. Bug squashed by using `return redirect(url_for('profile', username=session['user']))` to redrect to the profile page after category editing is complete. This takes new changes into account.
+    
+1. Bug discovered where " appears at the end of method description strings when read from the db...
+<!---
 ## Deployment
 
 This section should describe the process you went through to deploy the project to a hosting platform (e.g. GitHub Pages or Heroku).

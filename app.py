@@ -149,7 +149,7 @@ def edit_method(method_id):
         }
         mongo.db.methods.update({"_id": ObjectId(method_id)}, edit)
         flash("DIY Method Successfully Updated")
-        return render_template("method.html", method=method)
+        return redirect(url_for('method', method_id=method_id))
 
     categories = mongo.db.categories.find().sort("category_name", 1)
     return render_template(
@@ -169,17 +169,25 @@ def add_category():
         category = {
             "category_name": request.form.get("category_name")
         }
-        username = mongo.db.users.find_one(
-            {"username": session["user"]})["username"]
-        categories = list(mongo.db.categories.find().sort("category_name", 1))
-        is_admin = mongo.db.users.find_one(
-            {"username": session["user"]})["is_admin"]
         mongo.db.categories.insert_one(category)
         flash("New Category Added")
-        return render_template("profile.html", username=username,
-                               categories=categories, is_admin=is_admin)
+        return redirect(url_for('profile', username=session['user']))
 
     return render_template("add_category.html")
+
+
+@app.route("/edit_category/<category_id>", methods=["GET", "POST"])
+def edit_category(category_id):
+    if request.method == "POST":
+        submit = {
+            "category_name": request.form.get("category_name")
+        }
+        mongo.db.categories.update({"_id": ObjectId(category_id)}, submit)
+        flash("Category Successfully Updated")
+        return redirect(url_for('profile', username=session['user']))
+
+    category = mongo.db.categories.find_one({"_id": ObjectId(category_id)})
+    return render_template("edit_category.html", category=category)
 
 
 if __name__ == "__main__":
