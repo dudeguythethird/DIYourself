@@ -21,7 +21,7 @@
                 <div class="row">
                     <div class="input-field col s12">
                         <i class="fas fa-folder-open prefix orange-text text-lighten-2"></i>
-                        <select id="category_name1" name="category_name" class="validate" required>
+                        <select id="category_name" name="category_name" class="validate" required>
                             <option class="white-text" value="" disabled>Choose your method's category</option>
                             {% for category in categories %}
                                 {% if category.category_name == method.category_name %}
