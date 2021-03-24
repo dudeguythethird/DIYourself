@@ -1,4 +1,5 @@
 import os
+import re
 from flask import (
     Flask, flash, render_template, 
     redirect, request, session, url_for)
@@ -140,7 +141,11 @@ def add_method():
 @app.route("/method/<method_id>", methods=["GET"])
 def method(method_id):
     method = mongo.db.methods.find_one({"_id": ObjectId(method_id)})
-    return render_template("method.html", method=method)
+    print(method)
+    videoUrl = method["method_video"]
+    embedUrl = re.sub(r"(?ism).*?=(.*?)$",
+                      r"https://www.youtube.com/embed/\1", videoUrl)
+    return render_template("method.html", method=method, embedUrl=embedUrl)
 
 
 @app.route("/method/edit_method/<method_id>", methods=["GET", "POST"])

@@ -21,6 +21,14 @@
                 </div>
                 {% endif %}
             </div>
+            {% if method.method_video != "" %}
+            <div class="row video-container">
+                    <iframe class="col s12" height="auto" src="{{ embedUrl }}"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+            </div>
+            {% endif %}
             <div class="row">
                 <div class="col s12">
                     <h6>Instructions</h6>

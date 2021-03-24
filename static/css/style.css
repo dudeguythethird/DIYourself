@@ -97,7 +97,8 @@ a i:hover {
 }
 
 .search-background {
-    background-color: rgba(161, 136, 127, 0.7);
+    background-color: rgba(161, 136, 127, 0.8);
+    border: solid black 2px;
 }
 
 /*-------------------------------------------------------Add Method Form Styles*/
@@ -165,6 +166,10 @@ a i:hover {
 
 .instructions {
     white-space: pre-wrap;
+}
+
+.video-container {
+    height: fit-content;
 }
 
 /*-------------------------------------------------------Profile Page Styles*/
