@@ -141,7 +141,6 @@ def add_method():
 @app.route("/method/<method_id>", methods=["GET"])
 def method(method_id):
     method = mongo.db.methods.find_one({"_id": ObjectId(method_id)})
-    print(method)
     videoUrl = method["method_video"]
     embedUrl = re.sub(r"(?ism).*?=(.*?)$",
                       r"https://www.youtube.com/embed/\1", videoUrl)

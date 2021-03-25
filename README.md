@@ -153,13 +153,32 @@ If this section grows too long, you may want to split it off into a separate fil
 ## Bugs
 
 1. Bug discovered where form validation for confirm password stopped working on sign up page. 
+    - This bug was caused by non-functional onclick and onkeyup event handlers which I improved. The code is now as bellow:
+
+    ```
+    if (window.location.pathname == '/sign_up') {
+    var password = document.getElementById("password")
+        , confirm_password = document.getElementById("password_confirm");
+
+    function validatePassword() {
+        if (password.value != confirm_password.value) {
+            confirm_password.setCustomValidity("Passwords Don't Match");
+        } else {
+            confirm_password.setCustomValidity('');
+        }
+    }
+
+    $("#password").change(validatePassword);
+    $("#password_confirm").keyup(validatePassword);
+    }
+    ```
 
 1. Bug discovered where method page does not immidiately update after editing, requires reload.
-    1. Bug squashed by using `return redirect(url_for('method', method_id=method_id))` to redrect to the method page after method editing is complete. This takes new changes into account.
+    - Bug squashed by using `return redirect(url_for('method', method_id=method_id))` to redrect to the method page after method editing is complete. This takes new changes into account.
 
 1. Bug discovered where profile page for admins does not 
 immidiately update after adding a new category. (suspect cause is same as last bug)
-    1. Bug squashed by using `return redirect(url_for('profile', username=session['user']))` to redrect to the profile page after category editing is complete. This takes new changes into account.
+    - Bug squashed by using `return redirect(url_for('profile', username=session['user']))` to redrect to the profile page after category editing is complete. This takes new changes into account.
     
 1. Bug discovered where " appears at the end of method description strings when read from the db...
 <!---
