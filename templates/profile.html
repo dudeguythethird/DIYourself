@@ -37,5 +37,27 @@
             {% endfor %}
         </div>
     {% endif %}
+        <h3 class="center-align all-methods">My DIY Methods:</h3>
+    {% if myMethods|length > 0 %}
+    {% for method in myMethods %}
+    <div class="row">
+            <div class="col s12 m8 offset-m2">
+                <div class="card orange darken-2">
+                    <div class="card-content white-text">
+                        <span class="card-title title">{{ method.method_name }}</span>
+                        <span>&nbsp;&nbsp;by {{ method.created_by }}</span>
+                        <span class="right category-name">{{ method.category_name }}</span>
+                        <p>{{ method.method_description }}</p>
+                    </div>
+                    <div class="card-action black-text">
+                        <a href="{{ url_for('method', method_id=method._id) }}" target="_blank">View Method</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    {% else %}
+        <h4 class="center-align all-methods deep-orange-text">You have not created any DIY methods, <a href="{{ url_for('add_method') }}">make one now?</a></h4>
+    {% endif %}
 </main>
 {% endblock %}

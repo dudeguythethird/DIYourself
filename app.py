@@ -100,10 +100,17 @@ def profile(username):
     categories = list(mongo.db.categories.find().sort("category_name", 1))
     is_admin = mongo.db.users.find_one(
         {"username": session["user"]})["is_admin"]
+    methods = list(mongo.db.methods.find())
+    methods.reverse()
+    myMethods = []
+    for method in methods:
+        if (method["created_by"]).lower() == (session["user"]).lower():
+            myMethods.append(method)
 
     if session["user"]:
         return render_template("profile.html", username=username,
-                               categories=categories, is_admin=is_admin)
+                               categories=categories, is_admin=is_admin,
+                               myMethods=myMethods)
 
     return redirect(url_for("login"))
 
