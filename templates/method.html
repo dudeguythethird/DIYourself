@@ -33,10 +33,17 @@
             {% endif %}
             <div class="row">
                 <div class="col s12">
-                    <h6>Instructions</h6>
+                    <h5>Instructions</h5>
                     <p class="instructions">{{ method.method_steps }}</p>
                 </div>
             </div>
+            {% if method.method_created %}
+            <div class="row">
+                <div class="col s12">
+                    <h6>Created on {{ method.method_created }}</h6>
+                </div>
+            </div>
+            {% endif %}
         </div>
     </div>
 </main>
