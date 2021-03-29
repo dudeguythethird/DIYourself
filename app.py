@@ -151,10 +151,13 @@ def method(method_id):
     videoUrl = method["method_video"]
     embedUrl = re.sub(r"(?ism).*?=(.*?)$",
                       r"https://www.youtube.com/embed/\1", videoUrl)
-    is_admin = mongo.db.users.find_one(
-        {"username": session["user"]})["is_admin"]
-    return render_template("method.html", method=method, embedUrl=embedUrl,
-                           is_admin=is_admin)
+    if session:
+        is_admin = mongo.db.users.find_one(
+            {"username": session["user"]})["is_admin"]
+        return render_template("method.html", method=method, embedUrl=embedUrl,
+                               is_admin=is_admin)
+    else:
+        return render_template("method.html", method=method, embedUrl=embedUrl)
 
 
 @app.route("/method/edit_method/<method_id>", methods=["GET", "POST"])
