@@ -1,5 +1,4 @@
 import os
-import re
 from flask import (
     Flask, flash, render_template, 
     redirect, request, session, url_for)
@@ -148,16 +147,28 @@ def add_method():
 @app.route("/method/<method_id>", methods=["GET"])
 def method(method_id):
     method = mongo.db.methods.find_one({"_id": ObjectId(method_id)})
+    # The following is a custom method that changes YouTube links
+    # into the embed format that the iframe element that youtube
+    # provides expects. To create it I extended the functionality
+    # of a method found here, to make it work with links that users
+    # may copy paste from their browser's search bar:
+    # https://stackoverflow.com/questions/29781974/convert-youtube-link-into-an-embed-link/29782133
     videoUrl = method["method_video"]
-    embedUrl = re.sub(r"(?ism).*?=(.*?)$",
-                      r"https://www.youtube.com/embed/\1", videoUrl)
+    watchV = "watch?v="
+    channel = "&ab_channel="
+    if watchV in videoUrl:
+        videoUrl = videoUrl.replace(watchV, "embed/")
+    if channel in videoUrl:
+        delString = videoUrl.split("&ab_channel=", 1)[1]
+        videoUrl = videoUrl.replace(delString, "")
+        videoUrl = videoUrl.replace(channel, "")
     if session:
         is_admin = mongo.db.users.find_one(
             {"username": session["user"]})["is_admin"]
-        return render_template("method.html", method=method, embedUrl=embedUrl,
+        return render_template("method.html", method=method, videoUrl=videoUrl,
                                is_admin=is_admin)
     else:
-        return render_template("method.html", method=method, embedUrl=embedUrl)
+        return render_template("method.html", method=method, videoUrl=videoUrl)
 
 
 @app.route("/method/edit_method/<method_id>", methods=["GET", "POST"])
