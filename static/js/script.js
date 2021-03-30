@@ -4,6 +4,8 @@ $(document).ready(function () {
     $('.sidenav').sidenav({ edge: "right" });
     $('select').formSelect();
 
+    // This function reenables some form validation that is precluded by materialise and was provided to me as part of my Code Institute course. 
+
     validateMaterializeSelect();
     function validateMaterializeSelect() {
         let classValid = { "border-bottom": "1px solid #4caf50", "box-shadow": "0 1px 0 0 #4caf50" };
@@ -32,7 +34,7 @@ $(document).ready(function () {
     }
 });
 
-// The following password validation method was found: https://codepen.io/diegoleme/pen/surIK. I have fixed the onchange and onkeyup checks from the original with jQuery and wrapped the code in a if statement that checks which page the user is on. This is to avoid console errors on other pages.
+// The following password validation method was found: https://codepen.io/diegoleme/pen/surIK. I have fixed the onchange and onkeyup checks from the original with jQuery and wrapped the code in an if statement that checks which page the user is on. This is to avoid console errors on other pages.
 
 if (window.location.pathname == '/sign_up') {
     var password = document.getElementById("password")
