@@ -31,24 +31,26 @@
         </div>
         {% if methods|length > 0 %}
         {% for method in methods %}
-        <div class="row">
-            <div class="col s12 m8 offset-m2">
-                <div class="card orange darken-2">
-                    <div class="card-content white-text">
-                        <span class="card-title title">{{ method.method_name }}</span>
-                        <span>&nbsp;&nbsp;by {{ method.created_by }}</span>
-                        <span class="right category-name">{{ method.category_name }}</span>
-                        <p>{{ method.method_description }}</p>
-                    </div>
-                    <div class="card-action black-text">
-                        <a href="{{ url_for('method', method_id=method._id) }}">View Method</a>
+            <div class="row">
+                <div class="col s12 m8 offset-m2">
+                    <div class="card orange darken-2">
+                        <a href="{{ url_for('method', method_id=method._id) }}">
+                            <div class="card-content white-text">
+                                <span class="card-title title">{{ method.method_name }}</span>
+                                <span>&nbsp;&nbsp;by {{ method.created_by }}</span>
+                                <span class="right category-name">{{ method.category_name }}</span>
+                                <p>{{ method.method_description }}</p>
+                            </div>
+                            <div class="card-action white-text center-align">
+                                <span>View Method</span>
+                            </div>
+                        </a>
                     </div>
                 </div>
             </div>
-        </div>
         {% endfor %}
         {% else %}
-            <h3 class="center-align all-methods deep-orange-text text-lighten-5">No Results Found</h3>
+            <h3 class="center-align all-methods brown-text text-darken-4 white-shadow">No Results Found</h3>
         {% endif %}
     </main>
 </div>
