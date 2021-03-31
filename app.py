@@ -30,12 +30,15 @@ def get_methods():
 @app.route("/search", methods=["GET", "POST"])
 def search():
     query = request.form.get("query")
+    if not query:
+        flash("Please enter something in the search bar")
+        return redirect(url_for("get_methods"))
     methods = list(mongo.db.methods.find({"$text": {"$search": query}}))
     methods.reverse()
     return render_template("methods.html", methods=methods)
 
 
-@app.route("/sign_up", methods=["GET", "POST"])
+@app.route("/signup", methods=["GET", "POST"])
 def sign_up():
     if request.method == "POST":
         # check if username already exists in DB
