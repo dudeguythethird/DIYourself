@@ -125,7 +125,7 @@ def logout():
     return redirect(url_for("login"))
 
 
-@app.route("/add_method", methods=["GET", "POST"])
+@app.route("/method/add", methods=["GET", "POST"])
 def add_method():
     if request.method == "POST":
         todaysDate = date.today()
@@ -147,7 +147,7 @@ def add_method():
     return render_template("add_method.html", categories=categories)
 
 
-@app.route("/method/<method_id>", methods=["GET"])
+@app.route("/method/<method_id>/view", methods=["GET"])
 def method(method_id):
     method = mongo.db.methods.find_one({"_id": ObjectId(method_id)})
     # The following is a custom method that changes YouTube links
@@ -174,7 +174,7 @@ def method(method_id):
         return render_template("method.html", method=method, videoUrl=videoUrl)
 
 
-@app.route("/method/edit_method/<method_id>", methods=["GET", "POST"])
+@app.route("/method/<method_id>/edit", methods=["GET", "POST"])
 def edit_method(method_id):
     method = mongo.db.methods.find_one({"_id": ObjectId(method_id)})
     if request.method == "POST":
@@ -195,14 +195,14 @@ def edit_method(method_id):
         "edit_method.html", method=method, categories=categories)
 
 
-@app.route("/delete_method/<method_id>")
+@app.route("/method/<method_id>/delete")
 def delete_method(method_id):
     mongo.db.methods.remove({"_id": ObjectId(method_id)})
     flash("Method Successfully Deleted")
     return redirect(url_for("get_methods"))
 
 
-@app.route("/add_category", methods=["GET", "POST"])
+@app.route("/category/add", methods=["GET", "POST"])
 def add_category():
     if request.method == "POST":
         category = {
@@ -215,7 +215,7 @@ def add_category():
     return render_template("add_category.html")
 
 
-@app.route("/edit_category/<category_id>", methods=["GET", "POST"])
+@app.route("/category/<category_id>/edit", methods=["GET", "POST"])
 def edit_category(category_id):
     if request.method == "POST":
         submit = {
@@ -229,7 +229,7 @@ def edit_category(category_id):
     return render_template("edit_category.html", category=category)
 
 
-@app.route("/delete_category/<category_id>")
+@app.route("/category/<category_id>/delete")
 def delete_category(category_id):
     mongo.db.categories.remove({"_id": ObjectId(category_id)})
     flash("Category Successfully Deleted")
