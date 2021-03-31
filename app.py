@@ -125,24 +125,45 @@ def logout():
     return redirect(url_for("login"))
 
 
+def is_method_form_valid(form):
+    method_name = request.form.get("method_name")
+    method_description = request.form.get("method_description")
+    method_steps = request.form.get("method_steps")
+    if (
+        not (method_name or method_description or method_steps)
+        and (method_name.length
+             or method_description.length or method_steps.length) < 5
+        and method_name.length > 50
+        and method_description.length > 200
+        and method_steps.length > 2000
+    ):
+        return False
+    else:
+        return True
+
+
 @app.route("/method/add", methods=["GET", "POST"])
 def add_method():
     if request.method == "POST":
         todaysDate = date.today()
         euroDate = todaysDate.strftime("%d/%m/%Y")
-        method = {
-            "method_name": request.form.get('method_name'),
-            "category_name": request.form.get('category_name'),
-            "method_description": request.form.get('method_description'),
-            "method_video": request.form.get('method_video'),
-            "method_steps": request.form.get('method_steps'),
-            "method_created": euroDate,
-            "created_by": session["user"]
-        }
-        mongo.db.methods.insert_one(method)
-        flash("DIY Method Successfully Added")
-        return redirect(url_for("get_methods"))
-
+        is_valid = is_method_form_valid(request.form)
+        if is_valid:
+            method = {
+                "method_name": request.form.get('method_name'),
+                "category_name": request.form.get('category_name'),
+                "method_description": request.form.get('method_description'),
+                "method_video": request.form.get('method_video'),
+                "method_steps": request.form.get('method_steps'),
+                "method_created": euroDate,
+                "created_by": session["user"]
+            }
+            mongo.db.methods.insert_one(method)
+            flash("DIY Method Successfully Added")
+            return redirect(url_for("get_methods"))
+        else:
+            flash("Please enter the form values correctly")
+            return redirect(url_for("get_methods"))
     categories = mongo.db.categories.find().sort("category_name", 1)
     return render_template("add_method.html", categories=categories)
 
