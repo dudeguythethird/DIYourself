@@ -190,7 +190,8 @@ If this section grows too long, you may want to split it off into a separate fil
 immediately update after adding a new category. (suspect cause is same as last bug)
     - Bug squashed by using `return redirect(url_for('profile', username=session['user']))` to redirect to the profile page after category editing is complete. This takes new changes into account.
     
-1. Bug discovered where " appears at the end of method description strings when read from the db…
+1. Bug discovered where " appears at the end of method description strings when read from the DB.
+    - Bug squashed by removing a rogue close quotes from edit_method.html.
 
 1. Bug discovered where users who are not logged into an account were unable to view method pages. This was caused by the app.py code for rendering the page assuming the existence of a session user. If one were not present, the page is unable to load as it is trying to call a variable that doesn't exist.
     - Fixed with a simple `if session:...`

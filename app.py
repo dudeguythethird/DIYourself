@@ -20,7 +20,7 @@ mongo = PyMongo(app)
 
 
 @app.route("/")
-@app.route("/get_methods")
+@app.route("/methods")
 def get_methods():
     methods = list(mongo.db.methods.find())
     methods.reverse()
@@ -30,8 +30,8 @@ def get_methods():
 @app.route("/search", methods=["GET", "POST"])
 def search():
     query = request.form.get("query")
-    methods = list(mongo.db.methods.find({"$text": {"$search": query}}))
-    methods.reverse()
+    methods = list(mongo.db.methods.find(
+        {"$text": {"$search": query}}))
     return render_template("methods.html", methods=methods)
 
 
