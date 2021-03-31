@@ -168,16 +168,14 @@ def add_method():
     return render_template("add_method.html", categories=categories)
 
 
-@app.route("/method/<method_id>/view", methods=["GET"])
-def method(method_id):
-    method = mongo.db.methods.find_one({"_id": ObjectId(method_id)})
+def generate_embed_link_from_youtube_link(yt_link):
     # The following is a custom method that changes YouTube links
     # into the embed format that the iframe element that youtube
     # provides expects. To create it I extended the functionality
     # of a method found here, to make it work with links that users
     # may copy paste from their browser's search bar:
     # https://stackoverflow.com/questions/29781974/convert-youtube-link-into-an-embed-link/29782133
-    videoUrl = method["method_video"]
+    videoUrl = yt_link
     watchV = "watch?v="
     channel = "&ab_channel="
     if watchV in videoUrl:
@@ -186,6 +184,13 @@ def method(method_id):
         delString = videoUrl.split("&ab_channel=", 1)[1]
         videoUrl = videoUrl.replace(delString, "")
         videoUrl = videoUrl.replace(channel, "")
+    return videoUrl
+
+
+@app.route("/method/<method_id>/view", methods=["GET"])
+def method(method_id):
+    method = mongo.db.methods.find_one({"_id": ObjectId(method_id)})
+    videoUrl = generate_embed_link_from_youtube_link(method["method_video"])
     if session:
         is_admin = mongo.db.users.find_one(
             {"username": session["user"]})["is_admin"]
