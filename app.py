@@ -30,8 +30,8 @@ def get_methods():
 @app.route("/search", methods=["GET", "POST"])
 def search():
     query = request.form.get("query")
-    methods = list(mongo.db.methods.find(
-        {"$text": {"$search": query}}))
+    methods = list(mongo.db.methods.find({"$text": {"$search": query}}))
+    methods.reverse()
     return render_template("methods.html", methods=methods)
 
 
