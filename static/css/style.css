@@ -203,7 +203,16 @@ nav .brand-logo {
 @media only screen and (min-width: 1200px){
 .content-wrapper {
     min-height: 750px;
+}
+.top-margin {
+    margin-top: 30px;
 }}
+
+@media only screen and (max-width: 1025px) and (min-width: 1023px){
+    .orange.darken-2{
+        margin-top: 10px;
+    }
+}
 
 @media only screen and (max-width: 600px){
 .socials {
