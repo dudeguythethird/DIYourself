@@ -25,6 +25,8 @@ button {
 }
 
 .title {
+    margin-top: 0;
+    padding-top: 50px;
     font-family: 'Fredericka the Great', cursive;
 }
 
@@ -189,9 +191,23 @@ nav .brand-logo {
     left: 0;
     display: inline;
     position: relative;
+}
+.socials {
+    padding-left: 20px;
+    padding-right: 30px;
 }}
 
 @media only screen and (min-width: 1200px){
 .content-wrapper {
     min-height: 750px;
+}}
+
+@media only screen and (max-width: 600px){
+.socials {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.footer-copyright div {
+    font-size: medium;
+    margin-left: 10px;
 }}

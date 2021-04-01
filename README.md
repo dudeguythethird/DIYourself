@@ -282,6 +282,12 @@ The photos used in this site were obtained from:
 * https://unsplash.com/@drscythe
 * https://unsplash.com/@barnimages
 * https://unsplash.com/@pjswinburn
+* https://unsplash.com/@roselyntirado
+* https://unsplash.com/@umby
+* https://unsplash.com/@sidekix
+* https://unsplash.com/@wardhanaaditya
+* https://unsplash.com/@samthewam24
+* https://unsplash.com/@honza_kahanek
 
 ### Acknowledgements
 

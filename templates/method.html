@@ -1,51 +1,58 @@
 {% extends "base.html" %}
 {% block content %}
+<div class="stage-wrapper">
+    {% if method.category_name == "Wood-Work" %}
+    <img src="{{ url_for('static', filename='assets/images/theming/woodwork-tools3-min.png') }}"
+        alt="image of various woodworking woodworking tools" class="background-image">
+    {% endif %}
+    <main class="container content-wrapper">
 
-<main class="container">
+        <h3 class="center-align title white-text">{{ method.method_name }}</h3>
 
-    <h3 class="center-align title">{{ method.method_name }}</h3>
-
-    <div class="row">
-        <div class="card-panel brown lighten-2 col s12 white-text" id="method-content">
-            <div class="row">
-                <div class="col s6 m8 valign-wrapper">
-                    <h5 class="method-information"><span class="hide-on-small-only">{{ method.category_name }} -
-                        </span>Created by
-                        {{ method.created_by }}
-                    </h5>
+        <div class="row">
+            <div class="card-panel brown lighten-2 col s12 white-text" id="method-content">
+                <div class="row">
+                    <div class="col s6 m8 valign-wrapper">
+                        <h5 class="method-information"><span class="hide-on-small-only">{{ method.category_name }} -
+                            </span>Created by
+                            {{ method.created_by }}
+                        </h5>
+                    </div>
+                    <div class="col s6 m4">
+                        {% if session.user|lower == method.created_by|lower%}
+                        <a href="{{ url_for('edit_method', method_id=method._id) }}"
+                            class="waves-effect waves-light btn-small orange darken-2 right method-button">Edit</a>
+                        {% endif %}
+                        {% if session.user|lower == method.created_by|lower or is_admin %}
+                        <a href="{{ url_for('delete_method', method_id=method._id) }}"
+                            class="waves-effect waves-light btn-small orange darken-2 right method-button"
+                            onclick="return confirm('Are you sure you want to delete this method?');">Delete</a>
+                        {% endif %}
+                    </div>
                 </div>
-                <div class="col s6 m4">
-                {% if session.user|lower == method.created_by|lower%}
-                    <a href="{{ url_for('edit_method', method_id=method._id) }}" class="waves-effect waves-light btn-small orange darken-2 right method-button">Edit</a> 
-                {% endif %}
-                {% if session.user|lower == method.created_by|lower or is_admin %}
-                    <a href="{{ url_for('delete_method', method_id=method._id) }}" class="waves-effect waves-light btn-small orange darken-2 right method-button" onclick="return confirm('Are you sure you want to delete this method?');">Delete</a>
-                {% endif %}
-                </div>
-            </div>
-            {% if method.method_video != "" %}
-            <div class="row video-container">
-                    <iframe class="col s12" height="auto" src="{{ videoUrl }}"
-                        title="YouTube video player" frameborder="0"
+                {% if method.method_video != "" %}
+                <div class="row video-container">
+                    <iframe class="col s12" height="auto" src="{{ videoUrl }}" title="YouTube video player"
+                        frameborder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowfullscreen></iframe>
-            </div>
-            {% endif %}
-            <div class="row">
-                <div class="col s12">
-                    <h5>Instructions</h5>
-                    <p class="instructions">{{ method.method_steps }}</p>
                 </div>
-            </div>
-            {% if method.method_created %}
-            <div class="row">
-                <div class="col s12">
-                    <h6>Created on {{ method.method_created }}</h6>
+                {% endif %}
+                <div class="row">
+                    <div class="col s12">
+                        <h5>Instructions</h5>
+                        <p class="instructions">{{ method.method_steps }}</p>
+                    </div>
                 </div>
+                {% if method.method_created %}
+                <div class="row">
+                    <div class="col s12">
+                        <h6>Created on {{ method.method_created }}</h6>
+                    </div>
+                </div>
+                {% endif %}
             </div>
-            {% endif %}
         </div>
-    </div>
-</main>
-
+    </main>
+</div>
 {% endblock %}

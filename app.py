@@ -204,17 +204,22 @@ def method(method_id):
 def edit_method(method_id):
     method = mongo.db.methods.find_one({"_id": ObjectId(method_id)})
     if request.method == "POST":
-        edit = {
-            "method_name": request.form.get('method_name'),
-            "category_name": request.form.get('category_name'),
-            "method_description": request.form.get('method_description'),
-            "method_video": request.form.get('method_video'),
-            "method_steps": request.form.get('method_steps'),
-            "created_by": session["user"]
-        }
-        mongo.db.methods.update({"_id": ObjectId(method_id)}, edit)
-        flash("DIY Method Successfully Updated")
-        return redirect(url_for('method', method_id=method_id))
+        is_valid = is_method_form_valid(request.form)
+        if is_valid:
+            edit = {
+                "method_name": request.form.get('method_name'),
+                "category_name": request.form.get('category_name'),
+                "method_description": request.form.get('method_description'),
+                "method_video": request.form.get('method_video'),
+                "method_steps": request.form.get('method_steps'),
+                "created_by": session["user"]
+            }
+            mongo.db.methods.update({"_id": ObjectId(method_id)}, edit)
+            flash("DIY Method Successfully Updated")
+            return redirect(url_for('method', method_id=method_id))
+        else:
+            flash("Please enter form fields correctly")
+            return redirect(url_for('method', method_id=method_id))
 
     categories = mongo.db.categories.find().sort("category_name", 1)
     return render_template(
