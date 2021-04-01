@@ -103,6 +103,9 @@ a i:hover {
     border: solid black 2px;
 }
 
+input:not([type]), input[type=text]:not(.browser-default), input[type=password]:not(.browser-default), input[type=email]:not(.browser-default), input[type=url]:not(.browser-default), input[type=time]:not(.browser-default), input[type=date]:not(.browser-default), input[type=datetime]:not(.browser-default), input[type=datetime-local]:not(.browser-default), input[type=tel]:not(.browser-default), input[type=number]:not(.browser-default), input[type=search]:not(.browser-default), textarea.materialize-textarea {
+    border-bottom: 1px solid black;
+}
 /*-------------------------------------------------------Add Method Form Styles*/
 
 /*The following set of 3 styles make the back ground image function on the main page. the method comes from here: https://www.dwuser.com/education/content/the-basics-of-overlaying-content/ */ 
@@ -210,4 +213,10 @@ nav .brand-logo {
 .footer-copyright div {
     font-size: medium;
     margin-left: 10px;
+}
+.card-panel{
+    padding: 5px;
+}
+.btn, .btn-large, .btn-small, .btn-flat{
+    padding: 0 10px;
 }}
