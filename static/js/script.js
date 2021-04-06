@@ -1,8 +1,9 @@
-// This function initialises the mobile sidenav component from materialize
+// The following functions initialise the mobile sidenav component, form select and modal functionality from materialize.
 
 $(document).ready(function () {
     $('.sidenav').sidenav({ edge: "right" });
     $('select').formSelect();
+    $('.modal').modal();
 
     // This function reenables some form validation that is precluded by materialise and was provided to me as part of my Code Institute course. 
 
