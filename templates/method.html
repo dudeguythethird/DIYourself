@@ -5,6 +5,30 @@
     <img src="{{ url_for('static', filename='assets/images/theming/woodwork-tools3-min.png') }}"
         alt="image of various woodworking woodworking tools" class="background-image">
     {% endif %}
+    {% if method.category_name == "Painting" %}
+    <img src="{{ url_for('static', filename='assets/images/theming/paint-background.png') }}"
+        alt="image of couple holding paintbrushes" class="background-image">
+    {% endif %}
+    {% if method.category_name == "Upholstery" %}
+    <img src="{{ url_for('static', filename='assets/images/theming/upholstery-background.png') }}"
+        alt="image of a sofa in a modern living room" class="background-image">
+    {% endif %}
+    {% if method.category_name == "Textiles" %}
+    <img src="{{ url_for('static', filename='assets/images/theming/textiles-background.png') }}"
+        alt="image of someone operating a loom" class="background-image">
+    {% endif %}
+    {% if method.category_name == "Plumbing" %}
+    <img src="{{ url_for('static', filename='assets/images/theming/pipes-background.png') }}"
+        alt="image of various pipes" class="background-image">
+    {% endif %}
+    {% if method.category_name == "Other" %}
+    <img src="{{ url_for('static', filename='assets/images/theming/other-background.png') }}"
+        alt="image of a notebook and pencil" class="background-image">
+    {% endif %}
+    {% if method.category_name == "Electronics" %}
+    <img src="{{ url_for('static', filename='assets/images/theming/electronics-background.png') }}"
+        alt="image of a disassembled keyboard" class="background-image">
+    {% endif %}
     <main class="container content-wrapper">
 
         <h3 class="center-align title white-text">{{ method.method_name }}</h3>
