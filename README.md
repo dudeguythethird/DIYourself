@@ -87,26 +87,26 @@ This section is also where you would share links to any wireframes, mockups, dia
 
 1. Site-wide:
     1. A header: This element allows users to navigate around the site. By default it contains a title, a subtitle and three buttons. The buttons: log in, create a new account, and create a new method (if you are not logged on, this simply prompts you to create an account). If you are logged in, the “create account” and login buttons are replaced by a logout button and a “my profile” button. 
-    1. A footer: This element allows users to view basic copyright information about the site and contains links to the developers social media, so that they can contact said developer if wanted
+    2. A footer: This element allows users to view basic copyright information about the site and contains links to the developers social media, so that they can contact said developer if wanted
 1. Homepage:
     1. A search bar: this allows you to filter the site’s DIY methods by keywords.
-    1. A dynamic list of the site’s methods: each method has a description as well as a button link to its own method page. This allows users to peruse methods in search of something interesting. 
+    2. A dynamic list of the site’s methods: each method has a description as well as a button link to its own method page. This allows users to peruse methods in search of something interesting. 
 1. DIY Method page:
     1. Contents of the method page fill out dynamically based on the method that it is for.
-    1. “Edit” and “Delete” buttons are available for the author of the method only. 
+    2. “Edit” and “Delete” buttons are available for the author of the method only. 
 1. Create DIY method page:
     1. This contains a form where users can fill out the details of their DIY method. The form contains fields for: Method Title (Text, Required), Method type (Text, Dropdown, Required), a video link (Text, Link Format, Optional) and Step 1 (Text, Required). It also has a button that allows users to add additional steps (which are all optional). 
 1. Edit DIY method page:
     1. The same as the create page, except the form has been filled in with the details of your existing post. 
 1. Sign up page:
     1. This contains a form for new users to register to the site. They must provide an alphanumeric username and password with no special characters between 5 and 25 characters long. The password must be confirmed to register. This helps prevent users creating an account with the wrong password by accident. 
-    1. There is also a link directing users to log in, if they already have an account. 
+    2. There is also a link directing users to log in, if they already have an account. 
 1. Login page:
     1. This is the same as the sign up page except it is for existing users. Therefore the form contains no “Confirm Password” field.
-    1. The form also instead prompts users to sign up if they have not yet done so. 
+    2. The form also instead prompts users to sign up if they have not yet done so. 
 1. Profile Page:
     1. This page contains all of a user’s posts to the site.
-    1. Also contains options to add, edit, and delete categories, if the logged in user is an admin. Admin status is determined with the boolean field “is_admin” in the user objects within the project’s database. It is not possible to alter the value of this through the site itself, you have to change it manually in the database on mongoDB. By default, the value of “is_admin” for newly created accounts is “false”. This prevents users from granting themselves admin rights.
+    2. Also contains options to add, edit, and delete categories, if the logged in user is an admin. Admin status is determined with the boolean field “is_admin” in the user objects within the project’s database. It is not possible to alter the value of this through the site itself, you have to change it manually in the database on mongoDB. By default, the value of “is_admin” for newly created accounts is “false”. This prevents users from granting themselves admin rights.
 
 ### Features Left to Implement
 - Comments section + ability to reply to comments.
