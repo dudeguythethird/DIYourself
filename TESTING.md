@@ -1,3 +1,5 @@
+# Testing
+
 Features that need to be tested: 
 1. Creating an account.
 1. Logging out of and into your account.
@@ -119,6 +121,17 @@ If all these features can be shown to work, then all the User Stories, outlined 
 1. Click all the links on the site and make sure they do what you are expecting. You should have already done this with most of them except the footer social media links.
 1. Ensure the social media links open in a new tab (not pictured).
 
+## Lighthouse
 
+Below are the lighthouse reports for the pages of this site:
 
+![Image of homepage lighthouse report](static/assets/images/testing/lighthouse/diyhomelighthouse.png)
+![Image of signup lighthouse report](static/assets/images/testing/lighthouse/diysignuplighthouse.png)
+![Image of method lighthouse report](static/assets/images/testing/lighthouse/diymethodhouse.png)
+![Image of add method lighthouse report](static/assets/images/testing/lighthouse/diyaddmethodlighthouse.png)
+![Image of add category lighthouse report](static/assets/images/testing/lighthouse/diyaddcategorylighthouse.png)
+![Image of edit method lighthouse report](static/assets/images/testing/lighthouse/diyeditmethodlighthouse.png)
+![Image of edit category lighthouse report](static/assets/images/testing/lighthouse/diyeditcategorylighthouse.png)
+![Image of login lighthouse report](static/assets/images/testing/lighthouse/diyloginlighthouse.png)
+![Image of profile lighthouse report](static/assets/images/testing/lighthouse/diyprofilelighthouse.png)
 <!-- In addition, you should mention in this section how your project looks and works on different browsers and screen sizes. -->
