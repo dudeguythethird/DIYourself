@@ -40,7 +40,7 @@ I return to DIYourself and click the button in the header to create a new method
 
 ### User 2 (DIY fan, returning)
 
-I have made a post on DIYourself but I want to edit it. I return to the website and navigate to the “My Profile” section (from the nav bar) where the posts that I have made are stored. I find the one I am looking for and click “Learn More”, then “Edit”. I use the form to make the edits that I need to, it looks just like the method creation form except that its fields are prefilled with the data that I put there for my initial method.
+I have made a post on DIYourself but I want to edit it. I return to the website and navigate to the “My Profile” section (from the nav bar) where the posts that I have made are stored. I find the one I am looking for and click “View Method”, then “Edit”. I use the form to make the edits that I need to, it looks just like the method creation form except that its fields are prefilled with the data that I put there for my initial method.
 
 ### User 3 (Developer)
 
@@ -137,29 +137,10 @@ This section is also where you would share links to any wireframes, mockups, dia
     *   This project uses **Werkzeug** to provide an easy way to hash and salt passwords before storing them in the database.
 
 
-
-
-<!---
 ## Testing
 
-In this section, you need to convince the assessor that you have conducted enough testing to legitimately believe that the site works well. Essentially, in this part you will want to go over all of your user stories from the UX section and ensure that they all work as intended, with the project providing an easy and straightforward way for the users to achieve their goals.
+The testing information for this project is viewable in this [document](LINK).
 
-Whenever it is feasible, prefer to automate your tests, and if you've done so, provide a brief explanation of your approach, link to the test file(s) and explain how to run them.
-
-For any scenarios that have not been automated, test the user stories manually and provide as much detail as is relevant. A particularly useful form for describing your testing process is via scenarios, such as:
-
-1. Contact form:
-    1. Go to the "Contact Us" page
-    2. Try to submit the empty form and verify that an error message about the required fields appears
-    3. Try to submit the form with an invalid email address and verify that a relevant error message appears
-    4. Try to submit the form with all inputs valid and verify that a success message appears.
-
-In addition, you should mention in this section how your project looks and works on different browsers and screen sizes.
-
-You should also mention in this section any interesting bugs or problems you discovered during your testing, even if you haven't addressed them yet.
-
-If this section grows too long, you may want to split it off into a separate file and link to it from here.
---->
 ## Bugs
 
 1. Bug discovered where form validation for confirm password stopped working on sign up page. 
@@ -191,11 +172,13 @@ immediately update after adding a new category. (suspect cause is same as last b
     - Bug squashed by using `return redirect(url_for('profile', username=session['user']))` to redirect to the profile page after category editing is complete. This takes new changes into account.
     
 1. Bug discovered where " appears at the end of method description strings when read from the DB.
-    - Bug squashed by removing a rogue close quotes from edit_method.html.
+    - Bug squashed by removing a rogue close quote from edit_method.html.
 
 1. Bug discovered where users who are not logged into an account were unable to view method pages. This was caused by the app.py code for rendering the page assuming the existence of a session user. If one were not present, the page is unable to load as it is trying to call a variable that doesn't exist.
     - Fixed with a simple `if session:...`
 
+1. Bug discovered where form validation for signing up was not working properly. The “pattern” attribute was not working on the forms input elements, meaning usernames and passwords with special characters or spaces within them were not being stopped. 
+   - This bug was caused by an error in the value of the “pattern” attribute of the forms input elements. The part where the acceptable length of the input was specified “{5,15}” was originally coded “{5-15}”. Consequently, the whole Regex was not recognised. This has been corrected.
 
 
 ## Deployment
@@ -293,3 +276,5 @@ The photos used in this site were obtained from:
 
 - I received inspiration for this project from my Code Institute course and a variety of online people (in credits above).
 - I am also indebted to my mentor Akshat Garg, who as ever, provided ample, patient feedback on this project. 
+
+
