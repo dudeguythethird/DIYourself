@@ -38,6 +38,24 @@ def search():
     return render_template("methods.html", methods=methods)
 
 
+def is_signup_form_valid(form):
+    username = request.form.get("username").lower()
+    password = request.form.get("password")
+    confirm_password = request.form.get("password_confirm")
+    if (
+        not (username or password or confirm_password)
+        and (username.length
+             or password.length or confirm_password.length) < 5
+        and (username.length
+             or password.length or confirm_password.length) > 15
+        and request.form.get("password") != request.form.get(
+                "password_confirm")
+    ):
+        return False
+    else:
+        return True
+
+
 @app.route("/signup", methods=["GET", "POST"])
 def sign_up():
     if request.method == "POST":
@@ -49,8 +67,9 @@ def sign_up():
             flash("Username already in use")
             return redirect(url_for("sign_up"))
 
-        if request.form.get("password") == request.form.get(
-                "password_confirm"):
+        is_valid = is_signup_form_valid(request.form)
+
+        if is_valid:
             sign_up = {
                 "username": request.form.get("username").lower(),
                 "password": generate_password_hash(
@@ -63,6 +82,9 @@ def sign_up():
             session["user"] = request.form.get("username").lower()
             flash("Sign-Up Successful!")
             return redirect(url_for("profile", username=session["user"]))
+        else:
+            flash("Please enter the form values correctly")
+            return redirect(url_for("sign_up"))
 
     return render_template("sign_up.html")
 
