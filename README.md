@@ -139,7 +139,7 @@ This section is also where you would share links to any wireframes, mockups, dia
 
 ## Testing
 
-The testing information for this project is viewable in this [document](LINK).
+The testing information for this project is viewable in this [document](https://github.com/dudeguythethird/DIYourself/blob/master/TESTING.md).
 
 ## Bugs
 

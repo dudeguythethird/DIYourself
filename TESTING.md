@@ -121,4 +121,4 @@ If all these features can be shown to work, then all the User Stories, outlined 
 
 
 
-In addition, you should mention in this section how your project looks and works on different browsers and screen sizes.
+<!-- In addition, you should mention in this section how your project looks and works on different browsers and screen sizes. -->
