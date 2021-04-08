@@ -3,230 +3,248 @@
 /*-------------------------------------------------------Site Wide Styles*/
 
 body {
-    font-family: 'Josefin Slab', serif;
-    background-color: #d7ccc8;
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column;
+	font-family: 'Josefin Slab', serif;
+	background-color: #d7ccc8;
+	display: flex;
+	min-height: 100vh;
+	flex-direction: column;
 }
 
 main {
-    flex: 1 0 auto;
+	flex: 1 0 auto;
 }
 
 button {
-    font-family: 'Josefin Slab', serif;
-    font-weight: bold;
+	font-family: 'Josefin Slab', serif;
+	font-weight: bold;
 }
 
 #logo {
-    font-family: 'Fredericka the Great', cursive;
-    padding-left: 20px;
+	font-family: 'Fredericka the Great', cursive;
+	padding-left: 20px;
 }
 
 .title {
-    margin-top: 0;
-    padding-top: 50px;
-    font-family: 'Fredericka the Great', cursive;
+	margin-top: 0;
+	padding-top: 50px;
+	font-family: 'Fredericka the Great', cursive;
 }
 
 #subtitle {
-    font-family: 'Josefin Slab', serif;
-    font-size: smaller;
+	font-family: 'Josefin Slab', serif;
+	font-size: smaller;
 }
 
 ul li {
-    font-family: 'Josefin Slab', serif;
-    
+	font-family: 'Josefin Slab', serif;
 }
 
 .inline {
-    display: inline;
+	display: inline;
 }
 
 .flashes h4 {
-    line-height: 2;
+	line-height: 2;
 }
 
 .footer-copyright div {
-    font-size: large;
-    margin-left: 40px;
+	font-size: large;
+	margin-left: 40px;
 }
 
 .page-footer {
-    background-color: #a1887f;
-    padding-top: 0;
+	background-color: #a1887f;
+	padding-top: 0;
 }
 
 .page-footer .footer-copyright {
-    background-color: rgba(0, 0, 0, 0);
+	background-color: rgba(0, 0, 0, 0);
 }
 
 .socials {
-    padding-left: 40px;
-    padding-right: 60px;
-    font-size: x-large;
+	padding-left: 40px;
+	padding-right: 60px;
+	font-size: x-large;
 }
 
 a i:hover {
-    color: #e65100;
+	color: #e65100;
 }
+
 
 /*-------------------------------------------------------Homepage Styles*/
 
 .card .card-content .card-title {
-    display: inline;
+	display: inline;
 }
 
 .card .card-action {
-    border-top: 1px solid #d7ccc8;
+	border-top: 1px solid #d7ccc8;
 }
 
 .card .card-content p {
-    margin-top: 10px;
+	margin-top: 10px;
 }
 
 .category-name {
-    margin-top: 10px;
+	margin-top: 10px;
 }
 
 .card .card-action a:not(.btn):not(.btn-large):not(.btn-small):not(.btn-large):not(.btn-floating) {
-    color: white;
+	color: white;
 }
 
 .card .card-action a:not(.btn):not(.btn-large):not(.btn-small):not(.btn-large):not(.btn-floating):hover {
-    color: #5f4339;
+	color: #5f4339;
 }
 
 .search-background {
-    background-color: rgba(161, 136, 127, 0.8);
-    border: solid black 2px;
+	background-color: rgba(161, 136, 127, 0.8);
+	border: solid black 2px;
 }
 
 #query {
-    border-bottom: 1px solid black;
+	border-bottom: 1px solid black;
 }
+
+
 /*-------------------------------------------------------Add Method Form Styles*/
 
-/*The following set of 3 styles make the back ground image function on the main page. the method comes from here: https://www.dwuser.com/education/content/the-basics-of-overlaying-content/ */ 
+
+/*The following set of 3 styles make the back ground image function on the main page. the method comes from here: https://www.dwuser.com/education/content/the-basics-of-overlaying-content/ */
 
 .stage-wrapper {
-    position: relative;
-    top: 0;
-    left: 0;
-    bottom: 0;
+	position: relative;
+	top: 0;
+	left: 0;
+	bottom: 0;
 }
 
 .background-image {
-    width: 100%;
-    z-index: -1;
-    position: absolute;
-    left: 0;
-    top: 0;
+	width: 100%;
+	z-index: -1;
+	position: absolute;
+	left: 0;
+	top: 0;
 }
 
 .content-wrapper {
-    position: relative;
+	position: relative;
 }
 
 .all-methods {
-    margin-top: 0;
-    padding-top: 50px;
+	margin-top: 0;
+	padding-top: 50px;
 }
 
 .white-shadow {
-    text-shadow: 3px 3px 3px white, 0 0 25px white, 0 0 5px white;
+	text-shadow: 3px 3px 3px white, 0 0 25px white, 0 0 5px white;
 }
 
 .black-shadow {
-    text-shadow: 3px 3px 3px black, 0 0 25px black, 0 0 5px black;
+	text-shadow: 3px 3px 3px black, 0 0 25px black, 0 0 5px black;
 }
 
 .select-wrapper input.select-dropdown {
-    font-family: 'Josefin Slab', serif;
-    color: white;
+	font-family: 'Josefin Slab', serif;
+	color: white;
 }
+
 
 /* The following rule targetst the text inputted into the form, bringing its look in alignement with the rest of the site*/
 
-.input-field .prefix ~ input, .input-field .prefix ~ textarea, .input-field .prefix ~ label, .input-field .prefix ~ .validate ~ label, .input-field .prefix ~ .helper-text, .input-field .prefix ~ .autocomplete-content {
-    font-family: 'Josefin Slab', serif;
-    color: white;
+.input-field .prefix~input,
+.input-field .prefix~textarea,
+.input-field .prefix~label,
+.input-field .prefix~.validate~label,
+.input-field .prefix~.helper-text,
+.input-field .prefix~.autocomplete-content {
+	font-family: 'Josefin Slab', serif;
+	color: white;
 }
 
 .add-input {
-    font-size: xx-large;    
+	font-size: xx-large;
 }
+
 
 /*-------------------------------------------------------Method Page Styles*/
 
 .method-information {
-    display: inline;
+	display: inline;
 }
 
 #method-content {
-    padding-top: 10px;
+	padding-top: 10px;
 }
 
 .method-button {
-    margin-left: 10px;
-    margin-top: 12px;
+	margin-left: 10px;
+	margin-top: 12px;
 }
 
 .instructions {
-    white-space: pre-wrap;
+	white-space: pre-wrap;
 }
 
 .video-container {
-    height: fit-content;
+	height: fit-content;
 }
+
 
 /*-------------------------------------------------------Profile Page Styles*/
 
 .user {
-    margin-top: 20px;
+	margin-top: 20px;
 }
+
 
 /* This ovverides some materialize css that centres the brand logo classed element on smaller screens. */
 
-@media only screen and (max-width: 992px){
-nav .brand-logo {
-    left: 0;
-    display: inline;
-    position: relative;
-}
-.socials {
-    padding-left: 20px;
-    padding-right: 30px;
-}}
-
-@media only screen and (min-width: 1200px){
-.content-wrapper {
-    min-height: 750px;
-}
-.top-margin {
-    margin-top: 30px;
-}}
-
-@media only screen and (max-width: 1025px) and (min-width: 1023px){
-    .orange.darken-2{
-        margin-top: 10px;
-    }
+@media only screen and (max-width: 992px) {
+	nav .brand-logo {
+		left: 0;
+		display: inline;
+		position: relative;
+	}
+	.socials {
+		padding-left: 20px;
+		padding-right: 30px;
+	}
 }
 
-@media only screen and (max-width: 600px){
-.socials {
-    padding-left: 10px;
-    padding-right: 10px;
+@media only screen and (min-width: 1200px) {
+	.content-wrapper {
+		min-height: 750px;
+	}
+	.top-margin {
+		margin-top: 30px;
+	}
 }
-.footer-copyright div {
-    font-size: medium;
-    margin-left: 10px;
+
+@media only screen and (max-width: 1025px) and (min-width: 1023px) {
+	.orange.darken-2 {
+		margin-top: 10px;
+	}
 }
-.card-panel{
-    padding: 5px;
+
+@media only screen and (max-width: 600px) {
+	.socials {
+		padding-left: 10px;
+		padding-right: 10px;
+	}
+	.footer-copyright div {
+		font-size: medium;
+		margin-left: 10px;
+	}
+	.card-panel {
+		padding: 5px;
+	}
+	.btn,
+	.btn-large,
+	.btn-small,
+	.btn-flat {
+		padding: 0 10px;
+		margin-top: 10px;
+	}
 }
-.btn, .btn-large, .btn-small, .btn-flat{
-    padding: 0 10px;
-    margin-top: 10px;
-}}

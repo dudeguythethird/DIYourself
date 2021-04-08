@@ -1,5 +1,8 @@
 # Testing
 
+<!-- YOU NEED TO ADD INFORMATION ABOUT CODE VERIFIERS HERE BEFORE SUBMISSION -->
+
+
 Features that need to be tested: 
 1. Creating an account.
 1. Logging out of and into your account.
