@@ -36,17 +36,15 @@ $(document).ready(function () {
 });
 
 // The following password validation method was found: https://codepen.io/diegoleme/pen/surIK. I have fixed the onchange and onkeyup checks from the original with jQuery and wrapped the code in an if statement that checks which page the user is on. This is to avoid console errors on other pages.
-
+var password = document.getElementById("password"), confirm_password = document.getElementById("password_confirm");
 function validatePassword() {
-        if (password.value != confirm_password.value) {
-            confirm_password.setCustomValidity("Passwords Don't Match");
-        } else {
-            confirm_password.setCustomValidity('');
-        }
+    if (password.value != confirm_password.value) {
+        confirm_password.setCustomValidity("Passwords Don't Match");
+    } else {
+        confirm_password.setCustomValidity('');
     }
-
-if (window.location.pathname == '/sign_up') {
-    var password = document.getElementById("password"), confirm_password = document.getElementById("password_confirm");
+}
+if (window.location.pathname == '/signup') {
     $("#password").change(validatePassword);
     $("#password_confirm").keyup(validatePassword);
 }
