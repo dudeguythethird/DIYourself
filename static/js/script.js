@@ -9,8 +9,8 @@ $(document).ready(function () {
 
     validateMaterializeSelect();
     function validateMaterializeSelect() {
-        let classValid = { "border-bottom": "1px solid #4caf50", "box-shadow": "0 1px 0 0 #4caf50" };
-        let classInvalid = { "border-bottom": "1px solid #f44336", "box-shadow": "0 1px 0 0 #f44336" };
+        var classValid = { "border-bottom": "1px solid #4caf50", "box-shadow": "0 1px 0 0 #4caf50" };
+        var classInvalid = { "border-bottom": "1px solid #f44336", "box-shadow": "0 1px 0 0 #f44336" };
         // This next line was wrapped in an if statement (" if ($("select.validate").prop("required"))"), however, it didn't seem necessary so I removed it.
         $("select.validate").css({ "display": "block", "height": "0", "padding": "0", "width": "0", "position": "absolute" });
         $(".select-wrapper input.select-dropdown").on("focusin", function () {
@@ -37,11 +37,7 @@ $(document).ready(function () {
 
 // The following password validation method was found: https://codepen.io/diegoleme/pen/surIK. I have fixed the onchange and onkeyup checks from the original with jQuery and wrapped the code in an if statement that checks which page the user is on. This is to avoid console errors on other pages.
 
-if (window.location.pathname == '/sign_up') {
-    var password = document.getElementById("password")
-        , confirm_password = document.getElementById("password_confirm");
-
-    function validatePassword() {
+function validatePassword() {
         if (password.value != confirm_password.value) {
             confirm_password.setCustomValidity("Passwords Don't Match");
         } else {
@@ -49,6 +45,8 @@ if (window.location.pathname == '/sign_up') {
         }
     }
 
+if (window.location.pathname == '/sign_up') {
+    var password = document.getElementById("password"), confirm_password = document.getElementById("password_confirm");
     $("#password").change(validatePassword);
     $("#password_confirm").keyup(validatePassword);
 }

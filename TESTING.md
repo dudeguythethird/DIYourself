@@ -124,7 +124,9 @@ If all these features can be shown to work, then all the User Stories, outlined 
 1. Click all the links on the site and make sure they do what you are expecting. You should have already done this with most of them except the footer social media links.
 1. Ensure the social media links open in a new tab (not pictured).
 
-## Lighthouse
+## The site across various screen sizes
+
+## Lighthouse Reports
 
 Below are the lighthouse reports for the pages of this site:
 
@@ -137,4 +139,3 @@ Below are the lighthouse reports for the pages of this site:
 ![Image of edit category lighthouse report](static/assets/images/testing/lighthouse/diyeditcategorylighthouse.png)
 ![Image of login lighthouse report](static/assets/images/testing/lighthouse/diyloginlighthouse.png)
 ![Image of profile lighthouse report](static/assets/images/testing/lighthouse/diyprofilelighthouse.png)
-<!-- In addition, you should mention in this section how your project looks and works on different browsers and screen sizes. -->
