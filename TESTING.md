@@ -1,7 +1,6 @@
 # Testing
 
-<!-- YOU NEED TO ADD INFORMATION ABOUT CODE VERIFIERS HERE BEFORE SUBMISSION -->
-
+I have run my [HTML](https://validator.w3.org/#validate_by_input), [CSS](https://jigsaw.w3.org/css-validator/), [JavaScript](https://jshint.com/), and [Python](http://pep8online.com/) through the linked code verification services and eliminated any errors they have revealed, with some exceptions. For example the javascript validator does not recognise jQuery code and flags it as erroneous. Likewise, the HTML validator is not built to recognise Jinja templating.
 
 Features that need to be tested: 
 1. Creating an account.
@@ -124,7 +123,9 @@ If all these features can be shown to work, then all the User Stories, outlined 
 1. Click all the links on the site and make sure they do what you are expecting. You should have already done this with most of them except the footer social media links.
 1. Ensure the social media links open in a new tab (not pictured).
 
-## The site across various screen sizes
+## The site across various screen sizes and browsers
+
+[Here](https://drive.google.com/drive/folders/1RjGUIRetpx0L7lrQu5fdJ3qvGd-wv6X7?usp=sharing) are videos of me using the site across various screen sizes and browsers. Safari is not included because I don't have a mac.
 
 ## Lighthouse Reports
 
