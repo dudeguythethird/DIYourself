@@ -1,6 +1,6 @@
 # Testing
 
-I have run my [HTML](https://validator.w3.org/#validate_by_input), [CSS](https://jigsaw.w3.org/css-validator/), [JavaScript](https://jshint.com/), and [Python](http://pep8online.com/) through the linked code verification services and eliminated any errors they have revealed, with some exceptions. For example the javascript validator does not recognise jQuery code and flags it as erroneous. Likewise, the HTML validator is not built to recognise Jinja templating.
+I have run my [HTML](https://validator.w3.org/#validate_by_input), [CSS](https://jigsaw.w3.org/css-validator/), [JavaScript](https://jshint.com/), and [Python](http://pep8online.com/) through the linked code verification services and eliminated any errors they have revealed, with some exceptions. For example the Javascript validator does not recognise jQuery code and flags it as erroneous. Likewise, the HTML validator is not built to recognise Jinja templating.
 
 Features that need to be tested: 
 1. Creating an account.

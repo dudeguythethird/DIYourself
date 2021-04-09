@@ -1,7 +1,6 @@
 import os
-from flask import (
-    Flask, flash, render_template, 
-    redirect, request, session, url_for)
+from flask import (Flask, flash, render_template,
+                   redirect, request, session, url_for)
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -43,12 +42,12 @@ def is_signup_form_valid(form):
     password = request.form.get("password")
     confirm_password = request.form.get("password_confirm")
     if (
-        not (username or password or confirm_password)
-        and (username.length
-             or password.length or confirm_password.length) < 5
-        and (username.length
-             or password.length or confirm_password.length) > 15
-        and request.form.get("password") != request.form.get(
+        not (username or password or confirm_password) and
+            (username.length or
+             password.length or confirm_password.length) < 5 and
+            (username.length or
+             password.length or confirm_password.length) > 15 and
+            request.form.get("password") != request.form.get(
                 "password_confirm")
     ):
         return False
@@ -152,12 +151,12 @@ def is_method_form_valid(form):
     method_description = request.form.get("method_description")
     method_steps = request.form.get("method_steps")
     if (
-        not (method_name or method_description or method_steps)
-        and (method_name.length
-             or method_description.length or method_steps.length) < 5
-        and method_name.length > 50
-        and method_description.length > 200
-        and method_steps.length > 2000
+        not (method_name or method_description or method_steps) and
+            (method_name.length or
+             method_description.length or method_steps.length) < 5 and
+            method_name.length > 50 and
+            method_description.length > 200 and
+            method_steps.length > 2000
     ):
         return False
     else:

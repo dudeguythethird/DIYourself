@@ -1,6 +1,8 @@
 # DIYourself - A DIY sharing platform.
 
-DIYourself is a site that allows its users to create formatted DIY method guides and share them with other practical people. Users make accounts that allow them to create, edit and delete DIY guides. All guides are viewable by all users, that includes those who do not yet have an account. Users with accounts may only edit and delete their own guides. Included in each method is an optional field that allows users to include a link to a video for their guide, should one exist. 
+![image of project across various devices](static/assets/images/testing/diyourself-responsive.png)
+
+[DIYourself](https://diy-sharing-site.herokuapp.com/) is a site that allows its users to create formatted DIY method guides and share them with other practical people. Users make accounts that allow them to create, edit and delete DIY guides. All guides are viewable by all users, that includes those who do not yet have an account. Users with accounts may only edit and delete their own guides. Included in each method is an optional field that allows users to include a link to a video for their guide, should one exist.The goal of this project is to create a space for practical people of all kinds to share their personal techniques, or to share and amplify the work of others. In this sense, I think it serves a real life function.
  
 ## UX
 
@@ -75,13 +77,6 @@ In order to achieve a “DIY feel” for my site, I will be using a carefully se
 ![image of candles being made](/static/assets/images/theming/candles-min.jpg)
 
 ![image of woodworking tools](/static/assets/images/theming/woodwork-tools3-min.jpg)
- 
-<!--Use this section to provide insight into your UX process, focusing on who this website is for, what it is that they want to achieve and how your project is the best way to help them achieve these things.
-
-In particular, as part of this section we recommend that you provide a list of User Stories, with the following general structure:
-- As a user type, I want to perform an action, so that I can achieve a goal.
-
-This section is also where you would share links to any wireframes, mockups, diagrams etc. that you created as part of the design process. These files should themselves either be included as a pdf file in the project itself (in an separate directory), or just hosted elsewhere online and can be in any format that is viewable inside the browser.-->
 
 ## Features
 
@@ -139,7 +134,7 @@ This section is also where you would share links to any wireframes, mockups, dia
 
 ## Testing
 
-The testing information for this project is viewable in this [document](https://github.com/dudeguythethird/DIYourself/blob/master/TESTING.md).
+The testing information for this project is viewable in this [document](LINK).
 
 ## Bugs
 
@@ -185,15 +180,6 @@ immediately update after adding a new category. (suspect cause is same as last b
 
 This project is deployed on Heroku through my GitHub Account. In order to do this I needed both GitHub and Heroku profile. The GitHub profile is used to store the code for the project (to create a local copy of the code and do this yourself with this code, see below). I also am using MongoDB to host my site’s database. This needs a separate account also.
 
-To deploy a project like mine on Heroku, provided one already has the project files on their GitHub account, you must:
-
-1. Go to Heroku and create a new app, call it something appropriate and select the region nearest you. 
-1. Select the “Deploy” tab, under “deployment method” select GitHub.
-1. Under “Apps connected to GitHub”, log in to your GitHub account and search for the project name of the project you are deploying. Select the appropriate project. 
-1. Enable automatic deploys.
-1. Go to the settings tab and define your Config Vars. These are key value pairs. The keys you will need to provide values for are “IP”, “MONGO_DBNAME”, “MONGO_URI”, “PORT”, and “SECRET_KEY”. The values that you need to associate with these keys will be determined by how you configure your Database on MongoDB, they should be unique to your project.
-1. In the “Deploy” tab, scroll down to “Manual deploy” and select the branch you wish to deploy, there will probably be only one option.
-
 ### How to run this project locally
  
 1. Create a [GitHub](https://github.com/) account.
@@ -210,7 +196,7 @@ import os
 
 os.environ.setdefault("KEY", “VALUE”)
 ```
-Each of the key value pairs from the heroku config vars need to be present in this file. You should also make sure that you add the env.py file to a .gitignore file so that it is not uploaded to your public GitHub. This would effectively give the world access to your private database.
+You will need an instance of the line “os.environ.setdefault("KEY", “VALUE”)” for each key value pair. The details of which are below in the “Deploy this Project” section You should also make sure that you add the env.py file to a .gitignore file so that it is not uploaded to your public GitHub. This would effectively give the world access to your private database.
 
  
 ### Cloning this project
@@ -226,22 +212,29 @@ Want to make some changes to this project and develop on your own version?
 1. Press enter!
 1. Make sure you install all the requirements detailed in requirements.txt and set up your env.py file. How to do this in GitPod is detailed above.
 
+### Deploy this Project
+
+1. On your local version, you should already have a requirements.txt file, if you are working from my project and haven’t added any new requirements. If not use `pip freeze > requirements.txt`, in the command line, to create one that is up to date for your version of the project.
+1. My project files should also come with a Procfile that is appropriate for my version of the project. If you need to create a new one use `echo web: python app.py > Procfile`
+1. Create a new app on [Heroku](https://dashboard.heroku.com/) (You will need an account). Press “new” on the dashboard and select app. Give it an appropriate name and set the region to your nearest.
+1. From your new app’s dashboard, go to the deploy tab and select the deployment method of GitHub. 
+1. Select and confirm the correct GitHub repository.
+1. Go the Settings tab and click reveal config vars, set the following config vars:
+
+Key | Value
+----- | -------
+IP | 0.0.0.0
+MONGO_DBNAME | <your database’s name>
+MONGO_URI | mongodb+srv://<username>:<password>@<cluster_name>.ammug.mongodb.net/<databse_name>?retryWrites=true&w=majority
+PORT | 5000
+SECRET_KEY | <your secret key (a string you decide on yourself)>
+
+Please refer to mongoDB’s documentation for more information about MONGO_URI [formatting](https://docs.atlas.mongodb.com/).
+
+7. Click “Deploy”.
+1. Back in the “Deploy” tab, go to the “Manual Deployment” section and make sure the master branch is selected. Click “Deploy Branch”
+
 Following these steps there will be no differences between deployed and development versions.
- 
-
-
-
-
-<!---
-This section should describe the process you went through to deploy the project to a hosting platform (e.g. GitHub Pages or Heroku).
-
-In particular, you should provide all details of the differences between the deployed version and the development version, if any, including:
-- Different values for environment variables (Heroku Config Vars)?
-- Different configuration files?
-- Separate git branch?
-
-In addition, if it is not obvious, you should also describe how to run your code locally.
---->
 
 
 ## Credits
