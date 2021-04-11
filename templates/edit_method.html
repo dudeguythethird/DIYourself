@@ -1,85 +1,78 @@
 {% extends "base.html" %}
 {% block content %}
+    <main class="container">
 
-<main class="container">
+        <h3 class="center-align">Edit Method</h3>
 
-    <h3 class="center-align">Edit Method</h3>
-
-    <div class="row">
-        <form class="col s12" method="POST" action="{{ url_for('edit_method', method_id=method._id) }}">
-            <div class="card-panel brown lighten-2">
-                <!-- Method Name Text Input -->
-                <div class="row">
-                    <div class="input-field col s12">
-                        <i class="fas fa-file-signature prefix orange-text text-lighten-2"></i>
-                        <input id="method_name" name="method_name" minlength="5" maxlength="50" value="{{ method.method_name }}" type="text"
-                            class="validate" required>
-                        <label for="method_name" class="white-text">Method Name</label>
+        <div class="row">
+            <form class="col s12" method="POST" action="{{ url_for('edit_method', method_id=method._id) }}">
+                <div class="card-panel brown lighten-2">
+                    <!-- Method Name Text Input -->
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <i class="fas fa-file-signature prefix orange-text text-lighten-2"></i>
+                            <input id="method_name" name="method_name" minlength="5" maxlength="50" value="{{ method.method_name }}" type="text"
+                                class="validate" required>
+                            <label for="method_name" class="white-text">Method Name</label>
+                        </div>
+                    </div>
+                    <!-- Category Selection Dropdown -->
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <i class="fas fa-folder-open prefix orange-text text-lighten-2"></i>
+                            <select id="category_name" name="category_name" class="validate" style="border: none;" required>
+                                <option class="white-text" value="" disabled>Choose your method's category</option>
+                                {% for category in categories %}
+                                    {% if category.category_name == method.category_name %}
+                                        <option class="white-text" value="{{ category.category_name }}" selected>{{ category.category_name }}
+                                        </option>
+                                    {% else %}
+                                        <option class="white-text" value="{{ category.category_name }}">{{ category.category_name }}
+                                        </option>
+                                    {% endif %}
+                                {% endfor %}
+                            </select>
+                            <label class="white-text" for="category_name">Select Method Category</label>
+                        </div>
+                    </div>
+                    <!-- Method Description text field -->
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <i class="fas fa-align-left prefix orange-text text-lighten-2"></i>
+                            <textarea id="method_description" name="method_description" minlength="5" maxlength="200"
+                                class="materialize-textarea validate" required>{{ method.method_description }}</textarea>
+                            <label for="method_description" class="white-text">Method Description</label>
+                        </div>
+                    </div>
+                    <!-- YouTube link URL field -->
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <i class="fab fa-youtube prefix orange-text text-lighten-2"></i>
+                            <input id="method_video" name="method_video" value="{{ method.method_video }}" type="url" class="validate">
+                            <label for="method_video" class="white-text">YouTube Link (Optional)</label>
+                        </div>
+                    </div>
+                    <!-- Method Steps Text Field -->
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <i class="fas fa-list-ol prefix orange-text text-lighten-2"></i>
+                            <textarea id="method_steps" name="method_steps" minlength="5" maxlength="2000"
+                                class="materialize-textarea validate" required>{{ method.method_steps }}</textarea>
+                            <label for="method_steps" class="white-text">Method Instructions</label>
+                        </div>
+                    </div>
+                    <!-- Edit and Cancel Buttons -->
+                    <div class="row">
+                        <div class="col s12 center-align">
+                            <a href="{{ url_for('method', method_id=method._id) }}" class="btn-large red darken-4">Cancel <i class="fas fa-times-circle right"></i></a>
+                            <button type="submit"
+                                class="btn-large waves-effect waves-light orange lighten-2 black-text">
+                                Edit Method <i class="fas fa-edit"></i>
+                            </button>
+                        </div>
                     </div>
                 </div>
-                <!-- Category Selection Dropdown -->
-                <div class="row">
-                    <div class="input-field col s12">
-                        <i class="fas fa-folder-open prefix orange-text text-lighten-2"></i>
-                        <select id="category_name" name="category_name" class="validate" style="border: none;" required>
-                            <option class="white-text" value="" disabled>Choose your method's category</option>
-                            {% for category in categories %}
-                                {% if category.category_name == method.category_name %}
-                                    <option class="white-text" value="{{ category.category_name }}" selected>{{ category.category_name }}
-                                    </option>
-                                {% else %}
-                                    <option class="white-text" value="{{ category.category_name }}">{{ category.category_name }}
-                                    </option>
-                                {% endif %}
-                            {% endfor %}
-                        </select>
-                        <label class="white-text" for="category_name">Select Method Category</label>
-                    </div>
-                </div>
-                <!-- Method Description text field -->
-                <div class="row">
-                    <div class="input-field col s12">
-                        <i class="fas fa-align-left prefix orange-text text-lighten-2"></i>
-                        <textarea id="method_description" name="method_description" minlength="5" maxlength="200"
-                            class="materialize-textarea validate" required>{{ method.method_description }}</textarea>
-                        <label for="method_description" class="white-text">Method Description</label>
-                    </div>
-                </div>
-                <!-- YouTube link URL field -->
-                <div class="row">
-                    <div class="input-field col s12">
-                        <i class="fab fa-youtube prefix orange-text text-lighten-2"></i>
-                        <input id="method_video" name="method_video" value="{{ method.method_video }}" type="url" class="validate">
-                        <label for="method_video" class="white-text">YouTube Link (Optional)</label>
-                    </div>
-                </div>
-                <!-- Method Steps Text Field -->
-                <div class="row">
-                    <div class="input-field col s12">
-                        <i class="fas fa-list-ol prefix orange-text text-lighten-2"></i>
-                        <textarea id="method_steps" name="method_steps" minlength="5" maxlength="2000"
-                            class="materialize-textarea validate" required>{{ method.method_steps }}</textarea>
-                        <label for="method_steps" class="white-text">Method Instructions</label>
-                    </div>
-                    <!--Below is the begining of a method that I may yet implement, that will allow users to add a custom number of text fields for their method instructions (one for each step) and then they would be stored as a list or perhaps a dictionary. DELETE???-->
-                    <!-- <div class="col s1">
-                        <br>
-                        <a href="javascript:void(0);" class="add-input orange-text text-lighten-2"><i class="far fa-plus-square"></i></a>
-                    </div> -->
-                </div>
-                <!-- Edit and Cancel Buttons -->
-                <div class="row">
-                    <div class="col s12 center-align">
-                        <a href="{{ url_for('method', method_id=method._id) }}" class="btn-large red darken-4">Cancel <i class="fas fa-times-circle right"></i></a>
-                        <button type="submit"
-                            class="btn-large waves-effect waves-light orange lighten-2 black-text">
-                            Edit Method <i class="fas fa-edit"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </form>
-    </div>
-</main>
-
+            </form>
+        </div>
+    </main>
 {% endblock %}

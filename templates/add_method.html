@@ -24,8 +24,8 @@
                         <select id="category_name" name="category_name" class="validate" style="border: none;">
                             <option class="white-text" value="" disabled selected>Choose your method's category</option>
                             {% for category in categories %}
-                            <option class="white-text" value="{{ category.category_name }}">{{ category.category_name }}
-                            </option>
+                                <option class="white-text" value="{{ category.category_name }}">{{ category.category_name }}
+                                </option>
                             {% endfor %}
                         </select>
                         <label class="white-text" for="category_name">Select Method Category</label>
