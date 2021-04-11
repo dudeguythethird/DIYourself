@@ -2,6 +2,31 @@
 
 ![image of project across various devices](static/assets/images/testing/diyourself-responsive.png)
 
+## Contents:
+
+- [DIYourself - A DIY sharing platform.](#diyourself---a-diy-sharing-platform)
+  * [UX](#ux)
+    + [User 1 (DIY fan, new to site)](#user-1--diy-fan--new-to-site-)
+    + [User 2 (DIY fan, returning)](#user-2--diy-fan--returning-)
+    + [User 3 (Developer)](#user-3--developer-)
+  * [Theming](#theming)
+    + [Color Palette](#color-palette)
+    + [Fonts](#fonts)
+    + [Theme Images](#theme-images)
+  * [Features](#features)
+    + [Features Left to Implement](#features-left-to-implement)
+  * [Technologies Used](#technologies-used)
+  * [Testing](#testing)
+  * [Bugs](#bugs)
+  * [Deployment](#deployment)
+    + [How to run this project locally](#how-to-run-this-project-locally)
+    + [Cloning this project](#cloning-this-project)
+    + [Deploy this Project](#deploy-this-project)
+  * [Credits](#credits)
+    + [Content](#content)
+    + [Media](#media)
+    + [Acknowledgements](#acknowledgements)
+
 [DIYourself](https://diy-sharing-site.herokuapp.com/) is a site that allows its users to create formatted DIY method guides and share them with other practical people. Users make accounts that allow them to create, edit and delete DIY guides. All guides are viewable by all users, that includes those who do not yet have an account. Users with accounts may only edit and delete their own guides. Included in each method is an optional field that allows users to include a link to a video for their guide, should one exist.The goal of this project is to create a space for practical people of all kinds to share their personal techniques, or to share and amplify the work of others. In this sense, I think it serves a real life function as it could become a useful resource for homeowners, renters, or anyone looking to try out a fun project.
  
 ## UX
