@@ -137,10 +137,6 @@ a i:hover {
 	padding-top: 50px;
 }
 
-.white-shadow {
-	text-shadow: 3px 3px 3px white, 0 0 25px white, 0 0 5px white;
-}
-
 .select-wrapper input.select-dropdown {
 	font-family: 'Josefin Slab', serif;
 	color: white;
