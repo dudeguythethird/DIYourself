@@ -134,7 +134,7 @@ In order to achieve a “DIY feel” for my site, I will be using a carefully se
 
 ## Testing
 
-The testing information for this project is viewable in this [document](LINK).
+The testing information for this project is viewable in this [document](https://github.com/dudeguythethird/DIYourself/blob/master/TESTING.md).
 
 ## Bugs
 

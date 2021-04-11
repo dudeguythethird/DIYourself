@@ -145,20 +145,20 @@ def logout():
 
 
 def is_method_form_valid(form):
-    method_name = request.form.get("method_name")
-    method_description = request.form.get("method_description")
-    method_steps = request.form.get("method_steps")
-    if (
-        not (method_name or method_description or method_steps) and
-            (method_name.length or
-             method_description.length or method_steps.length) < 5 and
-            method_name.length > 50 and
-            method_description.length > 200 and
-            method_steps.length > 2000
-    ):
+    method_name = form.get("method_name")
+    method_description = form.get("method_description")
+    method_steps = form.get("method_steps")
+    if not method_name or method_description or method_steps:
         return False
-    else:
-        return True
+    if len(method_name) or len(method_description) or len(method_steps) < 5:
+        return False
+    if len(method_name) > 50:
+        return False
+    if len(method_description) > 200:
+        return False
+    if len(method_steps) > 2000:
+        return False
+    return True
 
 
 @app.route("/method/add", methods=["GET", "POST"])
