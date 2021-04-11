@@ -26,7 +26,7 @@ button {
 
 .title {
 	margin-top: 0;
-	padding-top: 50px;
+	padding-top: 20px;
 	font-family: 'Fredericka the Great', cursive;
 }
 
@@ -62,8 +62,8 @@ ul li {
 }
 
 .socials {
-	padding-left: 40px;
-	padding-right: 60px;
+	padding-left: 35px;
+	padding-right: 40px;
 	font-size: x-large;
 }
 
@@ -141,10 +141,6 @@ a i:hover {
 	text-shadow: 3px 3px 3px white, 0 0 25px white, 0 0 5px white;
 }
 
-.black-shadow {
-	text-shadow: 3px 3px 3px black, 0 0 25px black, 0 0 5px black;
-}
-
 .select-wrapper input.select-dropdown {
 	font-family: 'Josefin Slab', serif;
 	color: white;
@@ -175,6 +171,7 @@ a i:hover {
 }
 
 #method-content {
+    margin-top: 40px;
 	padding-top: 10px;
 }
 
