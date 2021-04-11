@@ -197,7 +197,7 @@ immediately update after adding a new category. (suspect cause is same as last b
 1. Bug discovered where users who are not logged into an account were unable to view method pages. This was caused by the app.py code for rendering the page assuming the existence of a session user. If one were not present, the page is unable to load as it is trying to call a variable that doesn't exist.
     - Fixed with a simple `if session:...`
 
-1. Bug discovered where form validation for signing up was not working properly. The “pattern” attribute was not working on the forms input elements, meaning usernames and passwords with special characters or spaces within them were not being stopped. 
+1. Bug discovered where form validation for signing up was not working properly. The “pattern” attribute was not working on the form's input elements, meaning usernames and passwords with special characters or spaces within them were not being stopped. 
    - This bug was caused by an error in the value of the “pattern” attribute of the forms input elements. The part where the acceptable length of the input was specified “{5,15}” was originally coded “{5-15}”. Consequently, the whole Regex was not recognised. This has been corrected.
 
 
