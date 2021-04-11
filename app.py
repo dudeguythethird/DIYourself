@@ -182,7 +182,7 @@ def add_method():
             return redirect(url_for("get_methods"))
         else:
             flash("Please enter the form values correctly")
-            return redirect(url_for("get_methods"))
+            return redirect(url_for("add_method"))
     categories = mongo.db.categories.find().sort("category_name", 1)
     return render_template("add_method.html", categories=categories)
 
