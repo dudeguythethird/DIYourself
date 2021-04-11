@@ -2,7 +2,7 @@
 
 ![image of project across various devices](static/assets/images/testing/diyourself-responsive.png)
 
-[DIYourself](https://diy-sharing-site.herokuapp.com/) is a site that allows its users to create formatted DIY method guides and share them with other practical people. Users make accounts that allow them to create, edit and delete DIY guides. All guides are viewable by all users, that includes those who do not yet have an account. Users with accounts may only edit and delete their own guides. Included in each method is an optional field that allows users to include a link to a video for their guide, should one exist.The goal of this project is to create a space for practical people of all kinds to share their personal techniques, or to share and amplify the work of others. In this sense, I think it serves a real life function.
+[DIYourself](https://diy-sharing-site.herokuapp.com/) is a site that allows its users to create formatted DIY method guides and share them with other practical people. Users make accounts that allow them to create, edit and delete DIY guides. All guides are viewable by all users, that includes those who do not yet have an account. Users with accounts may only edit and delete their own guides. Included in each method is an optional field that allows users to include a link to a video for their guide, should one exist.The goal of this project is to create a space for practical people of all kinds to share their personal techniques, or to share and amplify the work of others. In this sense, I think it serves a real life function as it could become a useful resource for homeowners, renters, or anyone looking to try out a fun project.
  
 ## UX
 
@@ -12,7 +12,7 @@ The UX for this site is being driven by three main considerations:
 1. Simplicity: the site must perform this functionality in as straightforward a manner as possible.
 1. Theme: the site must achieve the first two considerations while also being appropriately thematized around DIY, making things, and practical self-sufficiency.
  
-These considerations are ranked in importance already, ie. 1 is most important and 3 is the least, though I do not think that many sacrifices will need to be made to the less important considerations of theme. The majority of what consideration 3 demands, I think, can be achieved through colour, font, and image choice. 1 and 2, on the other hand, inform the structure of information directly. 
+These considerations are ranked in importance already, ie. 1 is most important and 3 is the least, though I do not think that many sacrifices will need to be made to the less important consideration of theme. The majority of what consideration 3 demands, I think, can be achieved through colour, font, and image choice. 1 and 2, on the other hand, inform the structure of information directly. 
 
 In order to meet these requirements, I have decided on a layout that looks roughly as belown (displayed are wireframes for the desktop site, wireframes for the tablet and phone experiences are available in assets/images/wireframes):
 

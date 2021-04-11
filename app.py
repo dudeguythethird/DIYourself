@@ -38,21 +38,19 @@ def search():
 
 
 def is_signup_form_valid(form):
-    username = request.form.get("username").lower()
-    password = request.form.get("password")
-    confirm_password = request.form.get("password_confirm")
-    if (
-        not (username or password or confirm_password) and
-            (username.length or
-             password.length or confirm_password.length) < 5 and
-            (username.length or
-             password.length or confirm_password.length) > 15 and
-            request.form.get("password") != request.form.get(
-                "password_confirm")
-    ):
+    username = form.get("username").lower()
+    password = form.get("password")
+    confirm_password = form.get("password_confirm")
+    print(username, password, confirm_password)
+    if not username or not password or not confirm_password:
         return False
-    else:
-        return True
+    if len(username) < 5 or len(password) < 5 or len(confirm_password) < 5:
+        return False
+    if len(username) > 15 or len(password) > 15 or len(confirm_password) > 15:
+        return False
+    if password != confirm_password:
+        return False
+    return True
 
 
 @app.route("/signup", methods=["GET", "POST"])
