@@ -110,13 +110,13 @@ In order to achieve a “DIY feel” for my site, I will be using a carefully se
 
 ## Technologies Used
 
-*   [HTML5]
+*   HTML5
     *   This project uses **HTML5** to provide structure and content to the site.
-*   [CSS3] 
+*   CSS3
     *   This project uses **CSS3** to provide styling, layout and basic interactivity to the structure and content defined by HTML5.
-*   [JavaScript]
+*   JavaScript
     *   This project uses **JavaScript** to provide it with interactivity as well as editing the functionality provided by Materialize.
-*   [Python]
+*   Python
     *   This project uses **Python** to determine the logic of database interactions for the site and to manipulate that data in useful ways.
 *   [Materialize](https://materializecss.com/)
     *   This project uses Materialize to simplify and speed up the process of creating an attractive and intuitive front end. It provides access to boilerplate code for various elements on the sight like the nav bar, footer, and form input elements.
@@ -126,9 +126,9 @@ In order to achieve a “DIY feel” for my site, I will be using a carefully se
     *   This project uses **Font Awesome** to allow the inclusion of icons. 
 *   [MongoDB](https://www.mongodb.com/)
     *   This project uses **MongoDB** to host a database that stores all the data that the site uses (user data, project data, and category data)
-*   [Flask]
+*   [Flask](https://flask.palletsprojects.com/en/1.1.x/)
     *   This project uses **Flask**, to determine how the project is built by the browser, incorporating data from the database.
-*   [Werkzeug]
+*   [Werkzeug](https://werkzeug.palletsprojects.com/en/1.0.x/)
     *   This project uses **Werkzeug** to provide an easy way to hash and salt passwords before storing them in the database.
 
 
