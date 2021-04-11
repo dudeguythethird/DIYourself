@@ -5,5 +5,3 @@ env.py
 __pycache__/
 *.py[cod]
 env.py
-*.gitpod.dockerfile
-*.gitpod.yml
