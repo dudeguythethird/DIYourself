@@ -148,9 +148,9 @@ def is_method_form_valid(form):
     method_name = form.get("method_name")
     method_description = form.get("method_description")
     method_steps = form.get("method_steps")
-    if not method_name or method_description or method_steps:
+    if not method_name or not method_description or not method_steps:
         return False
-    if len(method_name) or len(method_description) or len(method_steps) < 5:
+    if (len(method_name) or len(method_description) or len(method_steps)) < 5:
         return False
     if len(method_name) > 50:
         return False
@@ -233,6 +233,7 @@ def edit_method(method_id):
                 "method_steps": request.form.get('method_steps'),
                 "created_by": session["user"]
             }
+            print(edit)
             mongo.db.methods.update({"_id": ObjectId(method_id)}, edit)
             flash("DIY Method Successfully Updated")
             return redirect(url_for('method', method_id=method_id))
