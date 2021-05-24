@@ -40,8 +40,7 @@ def search():
 def is_signup_form_valid(form):
     username = form.get("username").lower()
     password = form.get("password")
-    confirm_password = form.get("password_confirm")
-    print(username, password, confirm_password)
+    confirm_password = form.get("password_confirm")#
     if not username or not password or not confirm_password:
         return False
     if len(username) < 5 or len(password) < 5 or len(confirm_password) < 5:
@@ -83,7 +82,13 @@ def sign_up():
             flash("Please enter the form values correctly")
             return redirect(url_for("sign_up"))
 
-    return render_template("sign_up.html")
+    logged_out = not session
+    if logged_out:
+        return render_template("sign_up.html")
+
+    else:
+        flash("You are already logged in! If you want to make another account, log out first")
+        return redirect(url_for("get_methods"))
 
 
 @app.route("/login", methods=["GET", "POST"])
@@ -103,14 +108,22 @@ def login():
             else:
                 # When passwords dont match
                 flash("Incorrect Username and/or Password")
+                session.clear()
                 return redirect(url_for("login"))
 
         else:
             # When username provided not present in DB.
             flash("Incorrect Username and/or Password")
+            session.clear
             return redirect(url_for("login"))
 
-    return render_template("login.html")
+    logged_out = not session
+    if logged_out:
+        return render_template("login.html")
+
+    else:
+        flash("You are already logged in!")
+        return redirect(url_for("get_methods"))
 
 
 @app.route("/profile")
@@ -140,7 +153,7 @@ def profile():
 def logout():
     # remove the user from the session cookie
     flash("You have been logged out")
-    session.pop("user")
+    session.clear()
     return redirect(url_for("login"))
 
 
@@ -167,6 +180,7 @@ def add_method():
         todaysDate = date.today()
         euroDate = todaysDate.strftime("%d/%m/%Y")
         is_valid = is_method_form_valid(request.form)
+
         if is_valid:
             method = {
                 "method_name": request.form.get('method_name'),
@@ -180,11 +194,20 @@ def add_method():
             mongo.db.methods.insert_one(method)
             flash("DIY Method Successfully Added")
             return redirect(url_for("get_methods"))
+
         else:
             flash("Please enter the form values correctly")
             return redirect(url_for("add_method"))
+
     categories = mongo.db.categories.find().sort("category_name", 1)
-    return render_template("add_method.html", categories=categories)
+    # To prevent non-authorised users accessing the add method page,
+    # I have included a check for a user session variable.
+    # There may be a better way of doing this.
+    if session['user']:
+        return render_template("add_method.html", categories=categories)
+    else:
+        flash("To create a method, you must first log in.")
+        return redirect(url_for("get_methods"))
 
 
 def generate_embed_link_from_youtube_link(yt_link):
@@ -233,7 +256,6 @@ def edit_method(method_id):
                 "method_steps": request.form.get('method_steps'),
                 "created_by": session["user"]
             }
-            print(edit)
             mongo.db.methods.update({"_id": ObjectId(method_id)}, edit)
             flash("DIY Method Successfully Updated")
             return redirect(url_for('method', method_id=method_id))
