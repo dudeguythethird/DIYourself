@@ -40,7 +40,7 @@ def search():
 def is_signup_form_valid(form):
     username = form.get("username").lower()
     password = form.get("password")
-    confirm_password = form.get("password_confirm")#
+    confirm_password = form.get("password_confirm")
     if not username or not password or not confirm_password:
         return False
     if len(username) < 5 or len(password) < 5 or len(confirm_password) < 5:
@@ -108,13 +108,11 @@ def login():
             else:
                 # When passwords dont match
                 flash("Incorrect Username and/or Password")
-                session.clear()
                 return redirect(url_for("login"))
 
         else:
             # When username provided not present in DB.
             flash("Incorrect Username and/or Password")
-            session.clear
             return redirect(url_for("login"))
 
     logged_out = not session
@@ -128,33 +126,36 @@ def login():
 
 @app.route("/profile")
 def profile():
-    # grab the session user's username from the DB, for display on the page.
-    username = mongo.db.users.find_one(
-        {"username": session["user"]})["username"]
-    categories = list(mongo.db.categories.find().sort("category_name", 1))
-    is_admin = mongo.db.users.find_one(
-        {"username": session["user"]})["is_admin"]
-    methods = list(mongo.db.methods.find())
-    methods.reverse()
-    myMethods = []
-    for method in methods:
-        if (method["created_by"]).lower() == (session["user"]).lower():
-            myMethods.append(method)
+    try:
+        # grab the session user's username from the DB, for display on the page.
+        username = mongo.db.users.find_one(
+            {"username": session["user"]})["username"]
+        categories = list(mongo.db.categories.find().sort("category_name", 1))
+        is_admin = mongo.db.users.find_one(
+            {"username": session["user"]})["is_admin"]
+        methods = list(mongo.db.methods.find())
+        methods.reverse()
+        myMethods = []
+        for method in methods:
+            if (method["created_by"]).lower() == (session["user"]).lower():
+                myMethods.append(method)
 
-    if session["user"]:
-        return render_template("profile.html", username=username,
-                               categories=categories, is_admin=is_admin,
-                               myMethods=myMethods)
-
-    return redirect(url_for("login"))
+        if session["user"]:
+            return render_template("profile.html", username=username,
+                                   categories=categories, is_admin=is_admin,
+                                   myMethods=myMethods)
+        else:
+            return redirect(url_for("get_methods"))
+    except:
+        return redirect(url_for("login"))
 
 
 @app.route("/logout")
 def logout():
     # remove the user from the session cookie
     flash("You have been logged out")
-    session.clear()
-    return redirect(url_for("login"))
+    session.pop('user')
+    return redirect(url_for("get_methods"))
 
 
 def is_method_form_valid(form):
@@ -203,7 +204,7 @@ def add_method():
     # To prevent non-authorised users accessing the add method page,
     # I have included a check for a user session variable.
     # There may be a better way of doing this.
-    if session['user']:
+    if session and session['user']:
         return render_template("add_method.html", categories=categories)
     else:
         flash("To create a method, you must first log in.")
@@ -231,52 +232,100 @@ def generate_embed_link_from_youtube_link(yt_link):
 
 @app.route("/method/<method_id>/view", methods=["GET"])
 def method(method_id):
-    method = mongo.db.methods.find_one({"_id": ObjectId(method_id)})
-    videoUrl = generate_embed_link_from_youtube_link(method["method_video"])
-    if session:
-        is_admin = mongo.db.users.find_one(
-            {"username": session["user"]})["is_admin"]
-        return render_template("method.html", method=method, videoUrl=videoUrl,
-                               is_admin=is_admin)
-    else:
-        return render_template("method.html", method=method, videoUrl=videoUrl)
+    try:
+        method = mongo.db.methods.find_one({"_id": ObjectId(method_id)})
+        if method:
+            videoUrl = generate_embed_link_from_youtube_link(
+                method["method_video"])
+            if session:
+                is_admin = mongo.db.users.find_one(
+                    {"username": session["user"]})["is_admin"]
+                return render_template("method.html", method=method,
+                                       videoUrl=videoUrl, is_admin=is_admin)
+            else:
+                return render_template(
+                    "method.html", method=method, videoUrl=videoUrl)
+        else:
+            return redirect(url_for('get_methods'))
+    except:
+        flash("That method does not exist.")
+        return redirect(url_for('get_methods'))
 
 
 @app.route("/method/<method_id>/edit", methods=["GET", "POST"])
 def edit_method(method_id):
-    method = mongo.db.methods.find_one({"_id": ObjectId(method_id)})
-    if request.method == "POST":
-        is_valid = is_method_form_valid(request.form)
-        if is_valid:
-            edit = {
-                "method_name": request.form.get('method_name'),
-                "category_name": request.form.get('category_name'),
-                "method_description": request.form.get('method_description'),
-                "method_video": request.form.get('method_video'),
-                "method_steps": request.form.get('method_steps'),
-                "created_by": session["user"]
-            }
-            mongo.db.methods.update({"_id": ObjectId(method_id)}, edit)
-            flash("DIY Method Successfully Updated")
-            return redirect(url_for('method', method_id=method_id))
-        else:
-            flash("Please enter form fields correctly")
-            return redirect(url_for('method', method_id=method_id))
+    try:
+        method = mongo.db.methods.find_one({"_id": ObjectId(method_id)})
+        if method:
+            if request.method == "POST":
+                is_valid = is_method_form_valid(request.form)
+                if is_valid:
+                    edit = {
+                        "method_name": request.form.get('method_name'),
+                        "category_name": request.form.get('category_name'),
+                        "method_description": request.form.get('method_description'),
+                        "method_video": request.form.get('method_video'),
+                        "method_steps": request.form.get('method_steps'),
+                        "created_by": session["user"]
+                    }
+                    mongo.db.methods.update({"_id": ObjectId(method_id)}, edit)
+                    flash("DIY Method Successfully Updated")
+                    return redirect(url_for('method', method_id=method_id))
+                else:
+                    flash("Please enter form fields correctly")
+                    return redirect(url_for('method', method_id=method_id))
 
-    categories = mongo.db.categories.find().sort("category_name", 1)
-    return render_template(
-        "edit_method.html", method=method, categories=categories)
+            if session:
+                if method["created_by"].lower() == session["user"].lower():
+                    categories = mongo.db.categories.find().sort("category_name", 1)
+                    return render_template(
+                        "edit_method.html", method=method, categories=categories)
+                else:
+                    flash("You must be a method's creator to edit it")
+                    return redirect(url_for('get_methods'))
+            else:
+                flash("You must be a method's creator to edit it")
+                return redirect(url_for('get_methods'))
+        else:
+            flash("That method does not exist.")
+            return redirect(url_for('get_methods'))
+    except:
+        flash("That method does not exist.")
+        return redirect(url_for('get_methods'))
 
 
 @app.route("/method/<method_id>/delete")
 def delete_method(method_id):
-    mongo.db.methods.remove({"_id": ObjectId(method_id)})
-    flash("Method Successfully Deleted")
-    return redirect(url_for("get_methods"))
+    method = mongo.db.methods.find_one({"_id": ObjectId(method_id)})
+    if session:
+        if method["created_by"].lower() == session["user"].lower():
+            mongo.db.methods.remove({"_id": ObjectId(method_id)})
+            flash("Method Successfully Deleted")
+            return redirect(url_for("get_methods"))
+        else:
+            flash("You must be a method's creator to delete it")
+            return redirect(url_for('get_methods'))
+    else:
+        flash("You must be a method's creator to delete it")
+        return redirect(url_for('get_methods'))
+
+
+def is_admin():
+    if not session:
+        return False
+    if session['user'] == 'admin':
+        return True
+    if session['user'] == 'joekeable':
+        return True
+    return False
 
 
 @app.route("/category/add", methods=["GET", "POST"])
 def add_category():
+    is_user_admin = is_admin()
+    if not is_user_admin:
+        flash("You must be an administrator to view that page")
+        return redirect(url_for('get_methods'))
     if request.method == "POST":
         category = {
             "category_name": request.form.get("category_name")
@@ -290,6 +339,10 @@ def add_category():
 
 @app.route("/category/<category_id>/edit", methods=["GET", "POST"])
 def edit_category(category_id):
+    is_user_admin = is_admin()
+    if not is_user_admin:
+        flash("You must be an administrator to view that page")
+        return redirect(url_for('get_methods'))
     if request.method == "POST":
         submit = {
             "category_name": request.form.get("category_name")
@@ -304,6 +357,10 @@ def edit_category(category_id):
 
 @app.route("/category/<category_id>/delete")
 def delete_category(category_id):
+    is_user_admin = is_admin()
+    if not is_user_admin:
+        flash("You must be an administrator to do that")
+        return redirect(url_for('get_methods'))
     mongo.db.categories.remove({"_id": ObjectId(category_id)})
     flash("Category Successfully Deleted")
     return redirect(url_for('profile', username=session['user']))
@@ -312,4 +369,4 @@ def delete_category(category_id):
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
-            debug=False)
+            debug=True)
