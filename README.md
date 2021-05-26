@@ -161,6 +161,16 @@ In order to achieve a “DIY feel” for my site, I will be using a carefully se
 
 The testing information for this project is viewable in this [document](https://github.com/dudeguythethird/DIYourself/blob/master/TESTING.md).
 
+## Database Structure
+
+This site's database contains the following tables:
+
+* categories - This is a collection of all the categories of DIY method that are available on the site. Each row, or category, consists of two pieces of information: "category_name" and a unique, automatically created "_id". Only administrators can create, edit, or delete these fields.
+
+* methods - This is a collection of all the methods currently on the site. Each row, or method contains 7 pieces of information: a unique "_id", "method_name", "category_name", "method_description", "method_video", "method_steps", and "created_by". "_id" is automatically created. The only optional field is "method_video", which if not filled out, will be populated by a blank string. Any user can create, edit and delete methods. However, they can only edit and delete methods they have created. Admins can delete any method.
+
+* users - This is a collection of all of the site's users. Each row, or user, consists of 4 pieces of information: a unique, automatically created "_id", a "username", a hashed and salted "password", and a boolean "is_admin". By default, "is_admin" is false, this can only be changed about a user from inside the database. Users can be created by any site user. They can only be edited or removed from inside the database.
+
 ## Bugs
 
 1. Bug discovered where form validation for confirm password stopped working on sign up page. 
@@ -199,6 +209,32 @@ immediately update after adding a new category. (suspect cause is same as last b
 
 1. Bug discovered where form validation for signing up was not working properly. The “pattern” attribute was not working on the form's input elements, meaning usernames and passwords with special characters or spaces within them were not being stopped. 
    - This bug was caused by an error in the value of the “pattern” attribute of the forms input elements. The part where the acceptable length of the input was specified “{5,15}” was originally coded “{5-15}”. Consequently, the whole Regex was not recognised. This has been corrected.
+
+1. Bug discovered where no new methods could be uploaded to the site. 
+    - This bug was being caused by a syntax error in the backend validity check function I added. Basically, this line: 
+    ```Python
+    if not method_name or not method_description or not method_steps:
+        return False
+    ```
+    - Was initially this:
+    ```Python
+    if not method_name or method_description or method_steps:
+        return False
+    ```
+    - This caused the function to always return `False`, as users rightly included descriptions and steps for their methods. I think the cause of this error was an earlier version of the function that included brackets after the initial `not`. Regardless, it is now fixed.
+
+1. Various bugs discovered around site security/ user verification. In short, users were able to access pages that they were not supposed to. This includes non-registered users being able to access the "add method" page through the url, signed-in users accessing the sign up and login pages in the same way, as well various admin only pages being accessible in this way also.
+    - These bugs were fixed with a variety of `if` checks to determine if the user was logged in, as well as a custom check for admin status below:
+    ```python
+    def is_admin():
+    if not session:
+        return False
+    if session['user'] == os.environ.get('ADMIN_ONE'):
+        return True
+    if session['user'] == os.environ.get('ADMIN_TWO'):
+        return True
+    return False
+    ```
 
 
 ## Deployment
