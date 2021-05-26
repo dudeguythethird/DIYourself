@@ -313,9 +313,9 @@ def delete_method(method_id):
 def is_admin():
     if not session:
         return False
-    if session['user'] == 'admin':
+    if session['user'] == os.environ.get('ADMIN_ONE'):
         return True
-    if session['user'] == 'joekeable':
+    if session['user'] == os.environ.get('ADMIN_TWO'):
         return True
     return False
 
