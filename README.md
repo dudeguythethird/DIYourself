@@ -236,6 +236,10 @@ immediately update after adding a new category. (suspect cause is same as last b
     return False
     ```
 
+1. Bug discovered where both the "Incorrect Username and/or Password" and "You are already logged in" messages display when a user tries to log into their account but provides incorrect information.
+    - This bug was being caused by `if` checks for having an incorrect password or not having an account in the database resdirecting users through the `login` function. This would cause the initial `if` check in that function (`if request.method == "POST":`) to fail, causing the non post part of the function to run. However, because there is now something stored in session (that being incorrect account information), the part of the function that ran was for already logged in users. This is what caused the display of the message "You are already logged in". 
+    - This bug was solved by having the incorrect password and no account `if` checks redirect users through the `get_methods` function, taking them back to the home screen and showing only the correct message.
+
 
 ## Deployment
 

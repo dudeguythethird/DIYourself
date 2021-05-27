@@ -108,12 +108,12 @@ def login():
             else:
                 # When passwords dont match
                 flash("Incorrect Username and/or Password")
-                return redirect(url_for("login"))
+                return redirect(url_for("get_methods"))
 
         else:
             # When username provided not present in DB.
             flash("Incorrect Username and/or Password")
-            return redirect(url_for("login"))
+            return redirect(url_for("get_methods"))
 
     logged_out = not session
     if logged_out:
