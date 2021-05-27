@@ -2,7 +2,7 @@
 
 I have run my [HTML](https://validator.w3.org/#validate_by_input), [CSS](https://jigsaw.w3.org/css-validator/), [JavaScript](https://jshint.com/), and [Python](http://pep8online.com/) through the linked code verification services and eliminated any errors they have revealed, with some exceptions. For example the Javascript validator does not recognise jQuery code and flags it as erroneous. Likewise, the HTML validator is not built to recognise Jinja templating.
 
-Features that need to be tested: 
+### Features that need to be tested: 
 1. Creating an account.
 1. Logging out of and into your account.
 1. Creating a new, fully featured, method.
@@ -14,7 +14,18 @@ Features that need to be tested:
 1. As an admin, creating, editing, and deleting method categories.
 1. All links functional, including social media links in the footer. 
 
+### Non Functionality that must be tested (things the site must not do):
+
+You must not be able to access any page that you cannot access through a link in the html, through the URL bar. This enapsulates various possibilities:
+1. Non-registered users (NRUs) must not be able to access any page related to CRUD functions like adding, editing, and deleting either methods or method categories. This does not include making an account.
+1. Registered, logged in users (LIUs) must not be able to access pages for logging in or creating an account. 
+1. All LIUs and NRUs must be unable to access pages related to category adding, editing or deleting, with the exception of admin LIUs.
+1. LIUs must not be able to access pages for editing and deleting methods that they did not create.
+1. The sight must not throw an error page when a user attempts to access a page for a method or category that does not exist. Or rather, it must handle it in some appropriate way.
+
 If all these features can be shown to work, then all the User Stories, outlined in this project’s ReadMe, will be completable. Below are steps explaining how to perform each test, with accompanying images from my own testing.
+
+## Feature Testing
 
 ### Feature 1 (Creating an account)
 1. Click the sign up button.
@@ -122,6 +133,65 @@ If all these features can be shown to work, then all the User Stories, outlined 
 
 1. Click all the links on the site and make sure they do what you are expecting. You should have already done this with most of them except the footer social media links.
 1. Ensure the social media links open in a new tab (not pictured).
+
+## Non-Functionality Testing
+
+Below are each of the possible situations where the site needs to prevent a user from doing something, with an image demonstrating how it responds. In all cases, it will kick the user back to the homepage with a message explaining why they were unsuccessful in doing the prohibited action.
+
+### Non-Feature 1 (NRUs accessing method and category CRUD pages through the URL bar.)
+
+* Add method page:
+![image of sight behaviour when an NRU tries to access the add method page](static/assets/images/testing/non-functionality/nru-method-add.png)
+
+* Edit method page:
+![image of sight behaviour when an NRU tries to access the edit method page](static/assets/images/testing/non-functionality/nru-method-edit.png)
+
+* Delete method page: 
+![image of sight behaviour when an NRU tries to delete a method.](static/assets/images/testing/non-functionality/nru-method-delete.png)
+
+* Add category page:
+![image of sight behaviour when an NRU tries to access the add category page](static/assets/images/testing/non-functionality/nru-category-add.png)
+
+* Edit category page:
+![image of sight behaviour when an NRU tries to access the edit category page](static/assets/images/testing/non-functionality/nru-category-edit.png)
+
+* Delete category:
+![image of sight behaviour when an NRU tries to delete a category](static/assets/images/testing/non-functionality/nru-category-delete.png)
+
+### Non-Feature 2 (LIUs must not be able to access login and sign up pages through the URL bar)
+
+* Sign up page
+![image of sight behaviour when an LIU tries to access the signup page](static/assets/images/testing/non-functionality/liu-signup.png)
+
+* Login page
+![image of sight behaviour when an LIU tries to access the login page](static/assets/images/testing/non-functionality/liu-login.png)
+
+### Non-Feature 3 (LIUs must not be able to access category CRUD pages through the URL bar, NRU behaviour shown in Non-Feature 1)
+
+* Add category page:
+![image of sight behaviour when an LIU tries to access the add category page](static/assets/images/testing/non-functionality/nru-category-add.png)
+
+* Edit category page:
+![image of sight behaviour when an LIU tries to access the edit category page](static/assets/images/testing/non-functionality/nru-category-edit.png)
+
+* Delete category:
+![image of sight behaviour when an LIU tries to delete a category](static/assets/images/testing/non-functionality/nru-category-delete.png)
+
+### Non-Feature 4 (LIUs must not be able to access edit and delete pages for methods they did not create through the URL bar)
+
+* Edit method:
+![image of sight behaviour when an LIU tries to edit another user's method](static/assets/images/testing/non-functionality/liu-method-edit-someones.png)
+
+* Delete method:
+![image of sight behaviour when an LIU tries to delete another user's method](static/assets/images/testing/non-functionality/liu-method-delete-someones.png)
+
+### Non-Feature 5 (the site must respond appropriatly if a user tries to access a method or category that doesn't exist)
+
+* Method:
+![image of sight behaviour when a user tries to access a method that doesn't exist](static/assets/images/testing/non-functionality/method-does-not-exist.png)
+
+* Category:
+![image of sight behaviour when a user tries to access a method that doesn't exist](static/assets/images/testing/non-functionality/category-does-not-exist.png)
 
 ## The site across various screen sizes and browsers
 
