@@ -221,12 +221,15 @@ def generate_embed_link_from_youtube_link(yt_link):
     videoUrl = yt_link
     watchV = "watch?v="
     channel = "&ab_channel="
+    share = "tu.be/"
     if watchV in videoUrl:
         videoUrl = videoUrl.replace(watchV, "embed/")
     if channel in videoUrl:
         delString = videoUrl.split("&ab_channel=", 1)[1]
         videoUrl = videoUrl.replace(delString, "")
         videoUrl = videoUrl.replace(channel, "")
+    if share in videoUrl:
+        videoUrl = videoUrl.replace(share, "tube.com/embed/")
     return videoUrl
 
 
