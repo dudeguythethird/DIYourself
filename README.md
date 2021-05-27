@@ -240,6 +240,16 @@ immediately update after adding a new category. (suspect cause is same as last b
     - This bug was being caused by `if` checks for having an incorrect password or not having an account in the database resdirecting users through the `login` function. This would cause the initial `if` check in that function (`if request.method == "POST":`) to fail, causing the non post part of the function to run. However, because there is now something stored in session (that being incorrect account information), the part of the function that ran was for already logged in users. This is what caused the display of the message "You are already logged in". 
     - This bug was solved by having the incorrect password and no account `if` checks redirect users through the `get_methods` function, taking them back to the home screen and showing only the correct message.
 
+1. Bug discovered where youtube links got from clicking the "share" button would not properly embed on method pages. 
+    - Bug fixed by adding a new `if` check to my `generate_embed_link_from_youtube_link` function, it is below:
+    ```python
+    videoUrl = yt_link
+    share = "tu.be/"
+    if share in videoUrl:
+        videoUrl = videoUrl.replace(share, "tube.com/embed/")
+    return videoUrl
+    ```
+
 
 ## Deployment
 
