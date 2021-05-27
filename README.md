@@ -2,9 +2,8 @@
 
 ![image of project across various devices](static/assets/images/testing/diyourself-responsive.png)
 
-## Contents:
+## Contents
 
-- [DIYourself - A DIY sharing platform.](#diyourself---a-diy-sharing-platform)
   * [UX](#ux)
     + [User 1 (DIY fan, new to site)](#user-1--diy-fan--new-to-site-)
     + [User 2 (DIY fan, returning)](#user-2--diy-fan--returning-)
@@ -17,6 +16,7 @@
     + [Features Left to Implement](#features-left-to-implement)
   * [Technologies Used](#technologies-used)
   * [Testing](#testing)
+  * [Database Structure](#database-structure)
   * [Bugs](#bugs)
   * [Deployment](#deployment)
     + [How to run this project locally](#how-to-run-this-project-locally)
@@ -320,6 +320,7 @@ Following these steps there will be no differences between deployed and developm
 * This helped me properly format the method steps imported from the DB: https://developer.mozilla.org/en-US/docs/Web/CSS/white-space
 * This helped me create a confirm message for deletion of posts and categories: https://stackoverflow.com/questions/9139075/how-to-show-a-confirm-message-before-delete/19973570
 * This helped inspire the algorithm I would eventually write to correctly format youtube links for display on a method’s page, regardless of whether the user submits a sharing link or one from the browser’s search bar: https://stackoverflow.com/questions/29781974/convert-youtube-link-into-an-embed-link/29782133
+* This generated my table of contents in my readme:https://ecotrust-canada.github.io/markdown-toc/
 
 ### Content
 * All text content on the site is original.
