@@ -234,19 +234,16 @@ def generate_embed_link_from_youtube_link(yt_link):
 def method(method_id):
     try:
         method = mongo.db.methods.find_one({"_id": ObjectId(method_id)})
-        if method:
-            videoUrl = generate_embed_link_from_youtube_link(
-                method["method_video"])
-            if session:
-                is_admin = mongo.db.users.find_one(
-                    {"username": session["user"]})["is_admin"]
-                return render_template("method.html", method=method,
-                                       videoUrl=videoUrl, is_admin=is_admin)
-            else:
-                return render_template(
-                    "method.html", method=method, videoUrl=videoUrl)
+        videoUrl = generate_embed_link_from_youtube_link(
+            method["method_video"])
+        if session:
+            is_admin = mongo.db.users.find_one(
+                {"username": session["user"]})["is_admin"]
+            return render_template("method.html", method=method,
+                                    videoUrl=videoUrl, is_admin=is_admin)
         else:
-            return redirect(url_for('get_methods'))
+            return render_template(
+                "method.html", method=method, videoUrl=videoUrl)
     except:
         flash("That method does not exist.")
         return redirect(url_for('get_methods'))
@@ -256,39 +253,32 @@ def method(method_id):
 def edit_method(method_id):
     try:
         method = mongo.db.methods.find_one({"_id": ObjectId(method_id)})
-        if method:
-            if request.method == "POST":
-                is_valid = is_method_form_valid(request.form)
-                if is_valid:
-                    edit = {
-                        "method_name": request.form.get('method_name'),
-                        "category_name": request.form.get('category_name'),
-                        "method_description": request.form.get('method_description'),
-                        "method_video": request.form.get('method_video'),
-                        "method_steps": request.form.get('method_steps'),
-                        "created_by": session["user"]
-                    }
-                    mongo.db.methods.update({"_id": ObjectId(method_id)}, edit)
-                    flash("DIY Method Successfully Updated")
-                    return redirect(url_for('method', method_id=method_id))
-                else:
-                    flash("Please enter form fields correctly")
-                    return redirect(url_for('method', method_id=method_id))
+        if request.method == "POST":
+            is_valid = is_method_form_valid(request.form)
+            if is_valid:
+                edit = {
+                    "method_name": request.form.get('method_name'),
+                    "category_name": request.form.get('category_name'),
+                    "method_description": request.form.get('method_description'),
+                    "method_video": request.form.get('method_video'),
+                    "method_steps": request.form.get('method_steps'),
+                    "created_by": session["user"]
+                }
+                mongo.db.methods.update({"_id": ObjectId(method_id)}, edit)
+                flash("DIY Method Successfully Updated")
+                return redirect(url_for('method', method_id=method_id))
+            else:
+                flash("Please enter form fields correctly")
+                return redirect(url_for('method', method_id=method_id))
 
-            if session:
-                if method["created_by"].lower() == session["user"].lower():
-                    categories = mongo.db.categories.find().sort("category_name", 1)
-                    return render_template(
-                        "edit_method.html", method=method, categories=categories)
-                else:
-                    flash("You must be a method's creator to edit it")
-                    return redirect(url_for('get_methods'))
+        if session:
+            if method["created_by"].lower() == session["user"].lower():
+                categories = mongo.db.categories.find().sort("category_name", 1)
+                return render_template(
+                    "edit_method.html", method=method, categories=categories)
             else:
                 flash("You must be a method's creator to edit it")
                 return redirect(url_for('get_methods'))
-        else:
-            flash("That method does not exist.")
-            return redirect(url_for('get_methods'))
     except:
         flash("That method does not exist.")
         return redirect(url_for('get_methods'))
@@ -351,8 +341,12 @@ def edit_category(category_id):
         flash("Category Successfully Updated")
         return redirect(url_for('profile', username=session['user']))
 
-    category = mongo.db.categories.find_one({"_id": ObjectId(category_id)})
-    return render_template("edit_category.html", category=category)
+    try:
+        category = mongo.db.categories.find_one({"_id": ObjectId(category_id)})
+        return render_template("edit_category.html", category=category)
+    except:
+        flash('That category does not exist')
+        return redirect(url_for("get_methods"))
 
 
 @app.route("/category/<category_id>/delete")
