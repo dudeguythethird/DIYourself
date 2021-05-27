@@ -284,6 +284,9 @@ def edit_method(method_id):
             else:
                 flash("You must be a method's creator to edit it")
                 return redirect(url_for('get_methods'))
+        else:
+            flash("You must be a method's creator to edit it")
+            return redirect(url_for('get_methods'))
     except:
         flash("That method does not exist.")
         return redirect(url_for('get_methods'))
