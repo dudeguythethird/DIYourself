@@ -369,9 +369,13 @@ def delete_category(category_id):
     if not is_user_admin:
         flash("You must be an administrator to do that")
         return redirect(url_for('get_methods'))
-    mongo.db.categories.remove({"_id": ObjectId(category_id)})
-    flash("Category Successfully Deleted")
-    return redirect(url_for('profile', username=session['user']))
+    try:
+        mongo.db.categories.remove({"_id": ObjectId(category_id)})
+        flash("Category Successfully Deleted")
+        return redirect(url_for('profile', username=session['user']))
+    except:
+        flash('That category does not exist')
+        return redirect(url_for("get_methods"))
 
 
 if __name__ == "__main__":
