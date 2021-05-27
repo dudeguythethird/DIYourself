@@ -127,7 +127,8 @@ def login():
 @app.route("/profile")
 def profile():
     try:
-        # grab the session user's username from the DB, for display on the page.
+        # grab the session user's username from the DB,
+        # for display on the page.
         username = mongo.db.users.find_one(
             {"username": session["user"]})["username"]
         categories = list(mongo.db.categories.find().sort("category_name", 1))
@@ -216,7 +217,8 @@ def generate_embed_link_from_youtube_link(yt_link):
     # into the embed format that the iframe element that youtube
     # provides expects. To create it I extended the functionality
     # of a method found here, to make it work with links that users
-    # may copy paste from their browser's search bar:
+    # may copy paste from their browser's search bar and sharing
+    # links:
     # https://stackoverflow.com/questions/29781974/convert-youtube-link-into-an-embed-link/29782133
     videoUrl = yt_link
     watchV = "watch?v="
@@ -243,7 +245,7 @@ def method(method_id):
             is_admin = mongo.db.users.find_one(
                 {"username": session["user"]})["is_admin"]
             return render_template("method.html", method=method,
-                                    videoUrl=videoUrl, is_admin=is_admin)
+                                   videoUrl=videoUrl, is_admin=is_admin)
         else:
             return render_template(
                 "method.html", method=method, videoUrl=videoUrl)
@@ -287,21 +289,9 @@ def edit_method(method_id):
         return redirect(url_for('get_methods'))
 
 
-@app.route("/method/<method_id>/delete")
-def delete_method(method_id):
-    method = mongo.db.methods.find_one({"_id": ObjectId(method_id)})
-    if session:
-        if method["created_by"].lower() == session["user"].lower():
-            mongo.db.methods.remove({"_id": ObjectId(method_id)})
-            flash("Method Successfully Deleted")
-            return redirect(url_for("get_methods"))
-        else:
-            flash("You must be a method's creator to delete it")
-            return redirect(url_for('get_methods'))
-    else:
-        flash("You must be a method's creator to delete it")
-        return redirect(url_for('get_methods'))
-
+# The following function checks if the user has admin priveledges,
+# the functions that follow it all use this check to grant said
+# admin priledges.
 
 def is_admin():
     if not session:
@@ -311,6 +301,24 @@ def is_admin():
     if session['user'] == os.environ.get('ADMIN_TWO'):
         return True
     return False
+
+
+@app.route("/method/<method_id>/delete")
+def delete_method(method_id):
+    method = mongo.db.methods.find_one({"_id": ObjectId(method_id)})
+    if session:
+        is_user_admin = is_admin()
+        if (method["created_by"].lower() == session["user"].lower()
+                or is_user_admin):
+            mongo.db.methods.remove({"_id": ObjectId(method_id)})
+            flash("Method Successfully Deleted")
+            return redirect(url_for("get_methods"))
+        else:
+            flash("You must be a method's creator to delete it")
+            return redirect(url_for('get_methods'))
+    else:
+        flash("You must be a method's creator to delete it")
+        return redirect(url_for('get_methods'))
 
 
 @app.route("/category/add", methods=["GET", "POST"])
